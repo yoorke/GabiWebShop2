@@ -1,0 +1,1497 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{484E8994-6303-4E62-B441-E83521DF0A34}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VivoShop</RootNamespace>
+    <AssemblyName>VivoShop</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=3.5.7.1213, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\AjaxControlToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="AjaxMin, Version=4.97.4951.28478, Culture=neutral, PublicKeyToken=21ef50ce11b5d80f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\AjaxMin.dll</HintPath>
+    </Reference>
+    <Reference Include="CKEditor.NET, Version=3.6.6.2, Culture=neutral, PublicKeyToken=e379cdf2f8354999, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\CKEditor.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="eshopBE">
+      <HintPath>..\..\..\WebShop - Framework\WebShopFramework\eshopBE\bin\Debug\eshopBE.dll</HintPath>
+    </Reference>
+    <Reference Include="eshopBL">
+      <HintPath>..\..\..\WebShop - Framework\WebShopFramework\eshopBL\bin\Debug\eshopBL.dll</HintPath>
+    </Reference>
+    <Reference Include="eshopUtilities">
+      <HintPath>..\..\..\WebShop - Framework\WebShopFramework\eshopUtilities\bin\Debug\eshopUtilities.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NReco.PdfGenerator, Version=1.1.12.0, Culture=neutral, PublicKeyToken=231663d50a41b451, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\NReco.PdfGenerator.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="cart.aspx" />
+    <Content Include="checkout.aspx" />
+    <Content Include="css\bundle.css" />
+    <Content Include="css\bundle.min.css">
+      <DependentUpon>bundle.css</DependentUpon>
+    </Content>
+    <Content Include="css\style.css" />
+    <Content Include="css\style.min.css">
+      <DependentUpon>style.css</DependentUpon>
+    </Content>
+    <Content Include="customControls\BannerControls\BlockBanner.ascx" />
+    <Content Include="customControls\BlockBrands\BlockBrands.ascx" />
+    <Content Include="customControls\BlockCategories\BlockCategories.ascx" />
+    <Content Include="customControls\BlockCategories\BlockCategoriesListItem.ascx" />
+    <Content Include="customControls\BlockFeatures\BlockedFeatures.ascx" />
+    <Content Include="customControls\BlockProductsCarousel\BlockProductsCarouselColumn.ascx" />
+    <Content Include="customControls\BlockProductsCarousel\BlockProductsCarousel.ascx" />
+    <Content Include="customControls\BlockProductsCarousel\Header.ascx" />
+    <Content Include="customControls\BlockProductsColumns\BlockProductsColumns.ascx" />
+    <Content Include="customControls\BlockProductsColumns\BlockProductsColumnsColumn.ascx" />
+    <Content Include="customControls\BlockProducts\BlockProductsListItem.ascx" />
+    <Content Include="customControls\BlockProducts\BlockProducts.ascx" />
+    <Content Include="customControls\BlockSidebarControls\BlockSidebar.ascx" />
+    <Content Include="customControls\BlockSidebarControls\BlockSidebarFiltersItem.ascx" />
+    <Content Include="customControls\BlockSidebarControls\BlockSidebarProductsItem.ascx" />
+    <Content Include="customControls\BlockSidebarControls\WidgetFiltersAttributesItem.ascx" />
+    <Content Include="customControls\BlockSidebarControls\WidgetFiltersBrandsItem.ascx" />
+    <Content Include="customControls\BlockSidebarControls\WidgetProductsItem.ascx" />
+    <Content Include="customControls\Footer\FooterControl.ascx" />
+    <Content Include="customControls\Header\Desktop\DesktopHeader.ascx" />
+    <Content Include="customControls\Header\Desktop\TopBar.ascx" />
+    <Content Include="customControls\Header\Desktop\HeaderMiddleContainer.ascx" />
+    <Content Include="customControls\Navigation\Desktop\DesktopNavigation.ascx" />
+    <Content Include="customControls\Navigation\Desktop\HorizontalMenu.ascx" />
+    <Content Include="customControls\Navigation\Desktop\NavigationItemColumn.ascx" />
+    <Content Include="customControls\Navigation\Desktop\NavigationRootItem.ascx" />
+    <Content Include="customControls\Navigation\Desktop\NavigationSecondLevelItem.ascx" />
+    <Content Include="customControls\Navigation\Desktop\NavigationThirdLevelItem.ascx" />
+    <Content Include="customControls\Navigation\Desktop\NavPanelIndicators.ascx" />
+    <Content Include="customControls\Navigation\Mobile\MobileNavigation.ascx" />
+    <Content Include="customControls\Navigation\Mobile\NavigationRootItem.ascx" />
+    <Content Include="customControls\Navigation\Mobile\NavigationSecondLevelItem.ascx" />
+    <Content Include="customControls\Navigation\Mobile\NavigationThirdLevelItem.ascx" />
+    <Content Include="customControls\PageHeaderControls\Breadcrumb.ascx" />
+    <Content Include="customControls\PageHeaderControls\PageHeader.ascx" />
+    <Content Include="customControls\Pagination\Pagination.ascx" />
+    <Content Include="customControls\ProductControls\FeaturedProduct\FeaturedProduct.ascx" />
+    <Content Include="customControls\ProductControls\PhotoswipeContainer\PhotoswipeContainerControl.ascx" />
+    <Content Include="customControls\ProductControls\ProductCard\ProductCardActions.ascx" />
+    <Content Include="customControls\ProductControls\ProductCard\ProductCardControl.ascx" />
+    <Content Include="customControls\ProductControls\ProductCard\ProductCardFeaturesList.ascx" />
+    <Content Include="customControls\ProductControls\ProductCard\ProductCardReview.ascx" />
+    <Content Include="customControls\ProductControls\ProductGallery\ProductGalleryControl.ascx" />
+    <Content Include="customControls\ProductControls\ProductWidget.ascx" />
+    <Content Include="customControls\Raw\HeaderRaw.ascx" />
+    <Content Include="customControls\Header\MobileHeader.ascx" />
+    <Content Include="customControls\Slider\Slider.ascx" />
+    <Content Include="customControls\Slider\SliderItem.ascx" />
+    <Content Include="customPage.aspx" />
+    <Content Include="default.aspx" />
+    <Content Include="error.aspx" />
+    <Content Include="error.html" />
+    <Content Include="fonts\stroyka\stroyka.css" />
+    <Content Include="fonts\stroyka\stroyka.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="images\aboutus.jpg" />
+    <Content Include="images\avatars\avatar-1.jpg" />
+    <Content Include="images\avatars\avatar-2.jpg" />
+    <Content Include="images\avatars\avatar-3.jpg" />
+    <Content Include="images\avatars\avatar-4.jpg" />
+    <Content Include="images\banners\banner-1-mobile.jpg" />
+    <Content Include="images\banners\banner-1.jpg" />
+    <Content Include="images\categories\category-1.jpg" />
+    <Content Include="images\categories\category-2.jpg" />
+    <Content Include="images\categories\category-3.jpg" />
+    <Content Include="images\categories\category-4.jpg" />
+    <Content Include="images\categories\category-5.jpg" />
+    <Content Include="images\categories\category-6.jpg" />
+    <Content Include="images\favicon.png" />
+    <Content Include="images\finder\finder.jpg" />
+    <Content Include="images\languages\language-1%402x.png" />
+    <Content Include="images\languages\language-1.png" />
+    <Content Include="images\languages\language-2%402x.png" />
+    <Content Include="images\languages\language-2.png" />
+    <Content Include="images\languages\language-3%402x.png" />
+    <Content Include="images\languages\language-3.png" />
+    <Content Include="images\languages\language-4%402x.png" />
+    <Content Include="images\languages\language-4.png" />
+    <Content Include="images\languages\language-5%402x.png" />
+    <Content Include="images\languages\language-5.png" />
+    <Content Include="images\logo-invert-sm-2.png" />
+    <Content Include="images\logo-invert-sm.png" />
+    <Content Include="images\logo-sm.png" />
+    <Content Include="images\logo.png" />
+    <Content Include="images\logos\logo-1.png" />
+    <Content Include="images\logos\logo-2.png" />
+    <Content Include="images\logos\logo-3.png" />
+    <Content Include="images\logos\logo-4.png" />
+    <Content Include="images\logos\logo-5.png" />
+    <Content Include="images\logos\logo-6.png" />
+    <Content Include="images\logos\logo-7.png" />
+    <Content Include="images\megamenu\megamenu-1.jpg" />
+    <Content Include="images\megamenu\megamenu-2.jpg" />
+    <Content Include="images\megamenu\megamenu-3.jpg" />
+    <Content Include="images\payments.png" />
+    <Content Include="images\posts\post-1-thumbnail%402x.jpg" />
+    <Content Include="images\posts\post-1-thumbnail.jpg" />
+    <Content Include="images\posts\post-1.jpg" />
+    <Content Include="images\posts\post-10.jpg" />
+    <Content Include="images\posts\post-2-thumbnail%402x.jpg" />
+    <Content Include="images\posts\post-2-thumbnail.jpg" />
+    <Content Include="images\posts\post-2.jpg" />
+    <Content Include="images\posts\post-3-thumbnail%402x.jpg" />
+    <Content Include="images\posts\post-3-thumbnail.jpg" />
+    <Content Include="images\posts\post-3.jpg" />
+    <Content Include="images\posts\post-4.jpg" />
+    <Content Include="images\posts\post-5.jpg" />
+    <Content Include="images\posts\post-6.jpg" />
+    <Content Include="images\posts\post-7.jpg" />
+    <Content Include="images\posts\post-8.jpg" />
+    <Content Include="images\posts\post-9.jpg" />
+    <Content Include="images\posts\post-featured.jpg" />
+    <Content Include="images\products\product-1.jpg" />
+    <Content Include="images\products\product-10.jpg" />
+    <Content Include="images\products\product-11.jpg" />
+    <Content Include="images\products\product-12.jpg" />
+    <Content Include="images\products\product-13.jpg" />
+    <Content Include="images\products\product-14.jpg" />
+    <Content Include="images\products\product-15.jpg" />
+    <Content Include="images\products\product-16-1.jpg" />
+    <Content Include="images\products\product-16-2.jpg" />
+    <Content Include="images\products\product-16-3.jpg" />
+    <Content Include="images\products\product-16-4.jpg" />
+    <Content Include="images\products\product-16.jpg" />
+    <Content Include="images\products\product-2.jpg" />
+    <Content Include="images\products\product-3.jpg" />
+    <Content Include="images\products\product-4.jpg" />
+    <Content Include="images\products\product-5.jpg" />
+    <Content Include="images\products\product-6.jpg" />
+    <Content Include="images\products\product-7.jpg" />
+    <Content Include="images\products\product-8.jpg" />
+    <Content Include="images\products\product-9.jpg" />
+    <Content Include="images\slides\slide-1-full.jpg" />
+    <Content Include="images\slides\slide-1-mobile.jpg" />
+    <Content Include="images\slides\slide-1.jpg" />
+    <Content Include="images\slides\slide-2-840x395.jpg" />
+    <Content Include="images\slides\slide-2-full.jpg" />
+    <Content Include="images\slides\slide-2-mobile.jpg" />
+    <Content Include="images\slides\slide-2.jpg" />
+    <Content Include="images\slides\slide-3-full.jpg" />
+    <Content Include="images\slides\slide-3-mobile.jpg" />
+    <Content Include="images\slides\slide-3.jpg" />
+    <Content Include="images\slides\slider-840x395.jpg" />
+    <Content Include="images\sprite.svg" />
+    <Content Include="images\teammates\teammate-1.jpg" />
+    <Content Include="images\teammates\teammate-2.jpg" />
+    <Content Include="images\teammates\teammate-3.jpg" />
+    <Content Include="jQueryTemplates\cartFPTemplate.html" />
+    <Content Include="jQueryTemplates\searchItemsTemplate.html" />
+    <Content Include="jQueryTemplates\searchProductItemsTemplate.html" />
+    <Content Include="js.src\header.js" />
+    <Content Include="js.src\main.js" />
+    <Content Include="js.src\number.js" />
+    <Content Include="js.src\products-page.js" />
+    <Content Include="js.src\web-shop.js" />
+    <Content Include="js\bundle.js" />
+    <Content Include="js\bundle.min.js">
+      <DependentUpon>bundle.js</DependentUpon>
+    </Content>
+    <Content Include="kontakt.aspx" />
+    <Content Include="orderSuccessful.aspx" />
+    <Content Include="product.aspx" />
+    <Content Include="products.aspx" />
+    <Content Include="vendor\bootstrap\css\bootstrap-grid.css" />
+    <Content Include="vendor\bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="vendor\bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="vendor\bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="vendor\bootstrap\css\bootstrap.css" />
+    <Content Include="vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="vendor\bootstrap\js\bootstrap.bundle.js" />
+    <Content Include="vendor\bootstrap\js\bootstrap.bundle.min.js" />
+    <Content Include="vendor\bootstrap\js\bootstrap.js" />
+    <Content Include="vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="vendor\fontawesome\css\all.css" />
+    <Content Include="vendor\fontawesome\css\all.min.css" />
+    <Content Include="vendor\fontawesome\css\brands.css" />
+    <Content Include="vendor\fontawesome\css\brands.min.css" />
+    <Content Include="vendor\fontawesome\css\fontawesome.css" />
+    <Content Include="vendor\fontawesome\css\fontawesome.min.css" />
+    <Content Include="vendor\fontawesome\css\regular.css" />
+    <Content Include="vendor\fontawesome\css\regular.min.css" />
+    <Content Include="vendor\fontawesome\css\solid.css" />
+    <Content Include="vendor\fontawesome\css\solid.min.css" />
+    <Content Include="vendor\fontawesome\css\svg-with-js.css" />
+    <Content Include="vendor\fontawesome\css\svg-with-js.min.css" />
+    <Content Include="vendor\fontawesome\css\v4-shims.css" />
+    <Content Include="vendor\fontawesome\css\v4-shims.min.css" />
+    <Content Include="vendor\fontawesome\LICENSE.txt" />
+    <Content Include="vendor\fontawesome\webfonts\fa-brands-400.svg" />
+    <Content Include="vendor\fontawesome\webfonts\fa-regular-400.svg" />
+    <Content Include="vendor\fontawesome\webfonts\fa-solid-900.svg" />
+    <Content Include="vendor\jquery\core.js" />
+    <Content Include="vendor\jquery\jquery.js" />
+    <Content Include="vendor\jquery\jquery.min.js" />
+    <Content Include="vendor\jquery\jquery.slim.js" />
+    <Content Include="vendor\jquery\jquery.slim.min.js" />
+    <Content Include="vendor\jquery\jquery.tmpl.min.js" />
+    <Content Include="vendor\nouislider\nouislider.css" />
+    <Content Include="vendor\nouislider\nouislider.js" />
+    <Content Include="vendor\nouislider\nouislider.min.css" />
+    <Content Include="vendor\nouislider\nouislider.min.js" />
+    <Content Include="vendor\owl-carousel\assets\ajax-loader.gif" />
+    <Content Include="vendor\owl-carousel\assets\owl.carousel.css" />
+    <Content Include="vendor\owl-carousel\assets\owl.carousel.min.css" />
+    <Content Include="vendor\owl-carousel\assets\owl.theme.default.css" />
+    <Content Include="vendor\owl-carousel\assets\owl.theme.default.min.css" />
+    <Content Include="vendor\owl-carousel\assets\owl.theme.green.css" />
+    <Content Include="vendor\owl-carousel\assets\owl.theme.green.min.css" />
+    <Content Include="vendor\owl-carousel\assets\owl.video.play.png" />
+    <Content Include="vendor\owl-carousel\owl.carousel.js" />
+    <Content Include="vendor\owl-carousel\owl.carousel.min.js" />
+    <Content Include="vendor\photoswipe\default-skin\default-skin.css" />
+    <Content Include="vendor\photoswipe\default-skin\default-skin.png" />
+    <Content Include="vendor\photoswipe\default-skin\default-skin.svg" />
+    <Content Include="vendor\photoswipe\default-skin\preloader.gif" />
+    <Content Include="vendor\photoswipe\photoswipe-ui-default.js" />
+    <Content Include="vendor\photoswipe\photoswipe-ui-default.min.js" />
+    <Content Include="vendor\photoswipe\photoswipe.css" />
+    <Content Include="vendor\photoswipe\photoswipe.js" />
+    <Content Include="vendor\photoswipe\photoswipe.min.js" />
+    <Content Include="vendor\select2\css\select2.css" />
+    <Content Include="vendor\select2\css\select2.min.css" />
+    <Content Include="vendor\select2\js\i18n\af.js" />
+    <Content Include="vendor\select2\js\i18n\ar.js" />
+    <Content Include="vendor\select2\js\i18n\az.js" />
+    <Content Include="vendor\select2\js\i18n\bg.js" />
+    <Content Include="vendor\select2\js\i18n\bn.js" />
+    <Content Include="vendor\select2\js\i18n\bs.js" />
+    <Content Include="vendor\select2\js\i18n\build.txt" />
+    <Content Include="vendor\select2\js\i18n\ca.js" />
+    <Content Include="vendor\select2\js\i18n\cs.js" />
+    <Content Include="vendor\select2\js\i18n\da.js" />
+    <Content Include="vendor\select2\js\i18n\de.js" />
+    <Content Include="vendor\select2\js\i18n\dsb.js" />
+    <Content Include="vendor\select2\js\i18n\el.js" />
+    <Content Include="vendor\select2\js\i18n\en.js" />
+    <Content Include="vendor\select2\js\i18n\es.js" />
+    <Content Include="vendor\select2\js\i18n\et.js" />
+    <Content Include="vendor\select2\js\i18n\eu.js" />
+    <Content Include="vendor\select2\js\i18n\fa.js" />
+    <Content Include="vendor\select2\js\i18n\fi.js" />
+    <Content Include="vendor\select2\js\i18n\fr.js" />
+    <Content Include="vendor\select2\js\i18n\gl.js" />
+    <Content Include="vendor\select2\js\i18n\he.js" />
+    <Content Include="vendor\select2\js\i18n\hi.js" />
+    <Content Include="vendor\select2\js\i18n\hr.js" />
+    <Content Include="vendor\select2\js\i18n\hsb.js" />
+    <Content Include="vendor\select2\js\i18n\hu.js" />
+    <Content Include="vendor\select2\js\i18n\hy.js" />
+    <Content Include="vendor\select2\js\i18n\id.js" />
+    <Content Include="vendor\select2\js\i18n\is.js" />
+    <Content Include="vendor\select2\js\i18n\it.js" />
+    <Content Include="vendor\select2\js\i18n\ja.js" />
+    <Content Include="vendor\select2\js\i18n\ka.js" />
+    <Content Include="vendor\select2\js\i18n\km.js" />
+    <Content Include="vendor\select2\js\i18n\ko.js" />
+    <Content Include="vendor\select2\js\i18n\lt.js" />
+    <Content Include="vendor\select2\js\i18n\lv.js" />
+    <Content Include="vendor\select2\js\i18n\mk.js" />
+    <Content Include="vendor\select2\js\i18n\ms.js" />
+    <Content Include="vendor\select2\js\i18n\nb.js" />
+    <Content Include="vendor\select2\js\i18n\ne.js" />
+    <Content Include="vendor\select2\js\i18n\nl.js" />
+    <Content Include="vendor\select2\js\i18n\pl.js" />
+    <Content Include="vendor\select2\js\i18n\ps.js" />
+    <Content Include="vendor\select2\js\i18n\pt-BR.js" />
+    <Content Include="vendor\select2\js\i18n\pt.js" />
+    <Content Include="vendor\select2\js\i18n\ro.js" />
+    <Content Include="vendor\select2\js\i18n\ru.js" />
+    <Content Include="vendor\select2\js\i18n\sk.js" />
+    <Content Include="vendor\select2\js\i18n\sl.js" />
+    <Content Include="vendor\select2\js\i18n\sq.js" />
+    <Content Include="vendor\select2\js\i18n\sr-Cyrl.js" />
+    <Content Include="vendor\select2\js\i18n\sr.js" />
+    <Content Include="vendor\select2\js\i18n\sv.js" />
+    <Content Include="vendor\select2\js\i18n\th.js" />
+    <Content Include="vendor\select2\js\i18n\tk.js" />
+    <Content Include="vendor\select2\js\i18n\tr.js" />
+    <Content Include="vendor\select2\js\i18n\uk.js" />
+    <Content Include="vendor\select2\js\i18n\vi.js" />
+    <Content Include="vendor\select2\js\i18n\zh-CN.js" />
+    <Content Include="vendor\select2\js\i18n\zh-TW.js" />
+    <Content Include="vendor\select2\js\select2.full.js" />
+    <Content Include="vendor\select2\js\select2.full.min.js" />
+    <Content Include="vendor\select2\js\select2.js" />
+    <Content Include="vendor\select2\js\select2.min.js" />
+    <Content Include="vendor\svg4everybody\svg4everybody.js" />
+    <Content Include="vendor\svg4everybody\svg4everybody.legacy.js" />
+    <Content Include="vendor\svg4everybody\svg4everybody.legacy.min.js" />
+    <Content Include="vendor\svg4everybody\svg4everybody.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="WebMethods.aspx" />
+    <Content Include="webShopAdmin\attribute.aspx" />
+    <Content Include="webShopAdmin\attributeKimtecAttribute.aspx" />
+    <Content Include="webShopAdmin\attributeKupindoAttribute.aspx" />
+    <Content Include="webShopAdmin\attributes.aspx" />
+    <Content Include="webShopAdmin\banner.aspx" />
+    <Content Include="webShopAdmin\brand.aspx" />
+    <Content Include="webShopAdmin\brands.aspx" />
+    <Content Include="webShopAdmin\categories.aspx" />
+    <Content Include="webShopAdmin\category.aspx" />
+    <Content Include="webShopAdmin\categoryBanner.aspx" />
+    <Content Include="webShopAdmin\categoryBanners.aspx" />
+    <Content Include="webShopAdmin\companySettings.aspx" />
+    <Content Include="webShopAdmin\coupon.aspx" />
+    <Content Include="webShopAdmin\coupons.aspx" />
+    <Content Include="webShopAdmin\createUser.aspx" />
+    <Content Include="webShopAdmin\css\bootstrap-theme.css" />
+    <Content Include="webShopAdmin\css\bootstrap-theme.min.css" />
+    <Content Include="webShopAdmin\css\bootstrap.css" />
+    <Content Include="webShopAdmin\css\bootstrap.min.css" />
+    <Content Include="webShopAdmin\css\font-awesome.css" />
+    <Content Include="webShopAdmin\css\font-awesome.min.css" />
+    <Content Include="webShopAdmin\css\jquery.datetimepicker.css" />
+    <Content Include="webShopAdmin\css\metisMenu.css" />
+    <Content Include="webShopAdmin\css\metisMenu.min.css" />
+    <Content Include="webShopAdmin\css\morris.css" />
+    <Content Include="webShopAdmin\css\sb-admin-2.css" />
+    <Content Include="webShopAdmin\css\style.css" />
+    <Content Include="webShopAdmin\css\styleV2.css" />
+    <Content Include="webShopAdmin\css\timeline.css" />
+    <Content Include="webShopAdmin\customControls\AttributeControl.ascx" />
+    <Content Include="webShopAdmin\customControls\CustomStatus.ascx" />
+    <Content Include="webShopAdmin\customPage.aspx" />
+    <Content Include="webShopAdmin\customPages.aspx" />
+    <Content Include="webShopAdmin\default.aspx" />
+    <Content Include="webShopAdmin\fonts\fontawesome-webfont.svg" />
+    <Content Include="webShopAdmin\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="webShopAdmin\getProducts.aspx" />
+    <Content Include="webShopAdmin\getProductsKimtec.aspx" />
+    <Content Include="webShopAdmin\getProductsThreeg.aspx" />
+    <Content Include="webShopAdmin\images\arrow_down.png" />
+    <Content Include="webShopAdmin\images\arrow_up.png" />
+    <Content Include="webShopAdmin\images\delete_icon.png" />
+    <Content Include="webShopAdmin\js\bootstrap.js" />
+    <Content Include="webShopAdmin\js\bootstrap.min.js" />
+    <Content Include="webShopAdmin\js\Chart.min.js" />
+    <Content Include="webShopAdmin\js\charts.js" />
+    <Content Include="webShopAdmin\js\common.js" />
+    <Content Include="webShopAdmin\js\flot-data.js" />
+    <Content Include="webShopAdmin\js\jquery-ui.min.js" />
+    <Content Include="webShopAdmin\js\jquery.datetimepicker.js" />
+    <Content Include="webShopAdmin\js\legend.js" />
+    <Content Include="webShopAdmin\js\metisMenu.js" />
+    <Content Include="webShopAdmin\js\metisMenu.min.js" />
+    <Content Include="webShopAdmin\js\morris-data.js" />
+    <Content Include="webShopAdmin\js\morris.min.js" />
+    <Content Include="webShopAdmin\js\npm.js" />
+    <Content Include="webShopAdmin\js\products.js" />
+    <Content Include="webShopAdmin\js\raphael-min.js" />
+    <Content Include="webShopAdmin\js\sb-admin-2.js" />
+    <Content Include="webShopAdmin\kimtecCategories.aspx" />
+    <Content Include="webShopAdmin\kupindoMapCategories.aspx" />
+    <Content Include="webShopAdmin\kupindoSettings.aspx" />
+    <Content Include="webShopAdmin\login.aspx" />
+    <Content Include="webShopAdmin\order.aspx" />
+    <Content Include="webShopAdmin\orders-graph.aspx" />
+    <Content Include="webShopAdmin\orders.aspx" />
+    <Content Include="webShopAdmin\product.aspx" />
+    <Content Include="webShopAdmin\productCopyData.aspx" />
+    <Content Include="webShopAdmin\products.aspx" />
+    <Content Include="webShopAdmin\promotion.aspx" />
+    <Content Include="webShopAdmin\promotions.aspx" />
+    <Content Include="webShopAdmin\reports\1476470_541694929238595_1282263928_n.jpg" />
+    <Content Include="webShopAdmin\retail.aspx" />
+    <Content Include="webShopAdmin\retails.aspx" />
+    <Content Include="webShopAdmin\scripts\ai.0.22.19-build00125.js" />
+    <Content Include="webShopAdmin\scripts\ai.0.22.19-build00125.min.js" />
+    <Content Include="webShopAdmin\slider.aspx" />
+    <Content Include="webShopAdmin\sliders.aspx" />
+    <Content Include="webShopAdmin\unusedImagesSettings.aspx" />
+    <Content Include="webShopAdmin\user.aspx" />
+    <Content Include="webShopAdmin\users.aspx" />
+    <Content Include="webShopAdmin\WebMethods.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="cart.aspx.cs">
+      <DependentUpon>cart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="cart.aspx.designer.cs">
+      <DependentUpon>cart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="checkout.aspx.cs">
+      <DependentUpon>checkout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="checkout.aspx.designer.cs">
+      <DependentUpon>checkout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="customControls\BannerControls\BlockBanner.ascx.cs">
+      <DependentUpon>BlockBanner.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customControls\BannerControls\BlockBanner.ascx.designer.cs">
+      <DependentUpon>BlockBanner.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="customControls\BlockBrands\BlockBrands.ascx.cs">
+      <DependentUpon>BlockBrands.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customControls\BlockBrands\BlockBrands.ascx.designer.cs">
+      <DependentUpon>BlockBrands.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="customControls\BlockCategories\BlockCategories.ascx.cs">
+      <DependentUpon>BlockCategories.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customControls\BlockCategories\BlockCategories.ascx.designer.cs">
+      <DependentUpon>BlockCategories.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="customControls\BlockCategories\BlockCategoriesListItem.ascx.cs">
+      <DependentUpon>BlockCategoriesListItem.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customControls\BlockCategories\BlockCategoriesListItem.ascx.designer.cs">
+      <DependentUpon>BlockCategoriesListItem.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="customControls\BlockFeatures\BlockedFeatures.ascx.cs">
+      <DependentUpon>BlockedFeatures.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customControls\BlockFeatures\BlockedFeatures.ascx.designer.cs">
+      <DependentUpon>BlockedFeatures.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="customControls\BlockProductsCarousel\BlockProductsCarouselColumn.ascx.cs">
+      <DependentUpon>BlockProductsCarouselColumn.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customControls\BlockProductsCarousel\BlockProductsCarouselColumn.ascx.designer.cs">
+      <DependentUpon>BlockProductsCarouselColumn.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="customControls\BlockProductsCarousel\BlockProductsCarousel.ascx.cs">
+      <DependentUpon>BlockProductsCarousel.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customControls\BlockProductsCarousel\BlockProductsCarousel.ascx.designer.cs">
+      <DependentUpon>BlockProductsCarousel.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="customControls\BlockProductsCarousel\BlockProductsCarouselType.cs" />
+    <Compile Include="customControls\BlockProductsCarousel\Header.ascx.cs">
+      <DependentUpon>Header.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customControls\BlockProductsCarousel\Header.ascx.designer.cs">
+      <DependentUpon>Header.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="customControls\BlockProductsColumns\BlockProductsColumns.ascx.cs">
+      <DependentUpon>BlockProductsColumns.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customControls\BlockProductsColumns\BlockProductsColumns.ascx.designer.cs">
+      <DependentUpon>BlockProductsColumns.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="customControls\BlockProductsColumns\BlockProductsColumnsColumn.ascx.cs">
+      <DependentUpon>BlockProductsColumnsColumn.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customControls\BlockProductsColumns\BlockProductsColumnsColumn.ascx.designer.cs">
+      <DependentUpon>BlockProductsColumnsColumn.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="customControls\BlockProducts\BlockProductsListItem.ascx.cs">
+      <DependentUpon>BlockProductsListItem.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customControls\BlockProducts\BlockProductsListItem.ascx.designer.cs">
+      <DependentUpon>BlockProductsListItem.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="customControls\BlockProducts\BlockProducts.ascx.cs">
+      <DependentUpon>BlockProducts.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customControls\BlockProducts\BlockProducts.ascx.designer.cs">
+      <DependentUpon>BlockProducts.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="customControls\BlockSidebarControls\BlockSidebar.ascx.cs">
+      <DependentUpon>BlockSidebar.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customControls\BlockSidebarControls\BlockSidebar.ascx.designer.cs">
+      <DependentUpon>BlockSidebar.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="customControls\BlockSidebarControls\BlockSidebarFiltersItem.ascx.cs">
+      <DependentUpon>BlockSidebarFiltersItem.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customControls\BlockSidebarControls\BlockSidebarFiltersItem.ascx.designer.cs">
+      <DependentUpon>BlockSidebarFiltersItem.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="customControls\BlockSidebarControls\BlockSidebarProductsItem.ascx.cs">
+      <DependentUpon>BlockSidebarProductsItem.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customControls\BlockSidebarControls\BlockSidebarProductsItem.ascx.designer.cs">
+      <DependentUpon>BlockSidebarProductsItem.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="customControls\BlockSidebarControls\WidgetFiltersAttributesItem.ascx.cs">
+      <DependentUpon>WidgetFiltersAttributesItem.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customControls\BlockSidebarControls\WidgetFiltersAttributesItem.ascx.designer.cs">
+      <DependentUpon>WidgetFiltersAttributesItem.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="customControls\BlockSidebarControls\WidgetFiltersBrandsItem.ascx.cs">
+      <DependentUpon>WidgetFiltersBrandsItem.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customControls\BlockSidebarControls\WidgetFiltersBrandsItem.ascx.designer.cs">
+      <DependentUpon>WidgetFiltersBrandsItem.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="customControls\BlockSidebarControls\WidgetProductsItem.ascx.cs">
+      <DependentUpon>WidgetProductsItem.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customControls\BlockSidebarControls\WidgetProductsItem.ascx.designer.cs">
+      <DependentUpon>WidgetProductsItem.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="customControls\Footer\FooterControl.ascx.cs">
+      <DependentUpon>FooterControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customControls\Footer\FooterControl.ascx.designer.cs">
+      <DependentUpon>FooterControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="customControls\Header\Desktop\DesktopHeader.ascx.cs">
+      <DependentUpon>DesktopHeader.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customControls\Header\Desktop\DesktopHeader.ascx.designer.cs">
+      <DependentUpon>DesktopHeader.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="customControls\Header\Desktop\TopBar.ascx.cs">
+      <DependentUpon>TopBar.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customControls\Header\Desktop\TopBar.ascx.designer.cs">
+      <DependentUpon>TopBar.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="customControls\Header\Desktop\HeaderMiddleContainer.ascx.cs">
+      <DependentUpon>HeaderMiddleContainer.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customControls\Header\Desktop\HeaderMiddleContainer.ascx.designer.cs">
+      <DependentUpon>HeaderMiddleContainer.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="customControls\Navigation\Desktop\DesktopNavigation.ascx.cs">
+      <DependentUpon>DesktopNavigation.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customControls\Navigation\Desktop\DesktopNavigation.ascx.designer.cs">
+      <DependentUpon>DesktopNavigation.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="customControls\Navigation\Desktop\HorizontalMenu.ascx.cs">
+      <DependentUpon>HorizontalMenu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customControls\Navigation\Desktop\HorizontalMenu.ascx.designer.cs">
+      <DependentUpon>HorizontalMenu.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="customControls\Navigation\Desktop\NavigationItemColumn.ascx.cs">
+      <DependentUpon>NavigationItemColumn.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customControls\Navigation\Desktop\NavigationItemColumn.ascx.designer.cs">
+      <DependentUpon>NavigationItemColumn.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="customControls\Navigation\Desktop\NavigationRootItem.ascx.cs">
+      <DependentUpon>NavigationRootItem.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customControls\Navigation\Desktop\NavigationRootItem.ascx.designer.cs">
+      <DependentUpon>NavigationRootItem.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="customControls\Navigation\Desktop\NavigationSecondLevelItem.ascx.cs">
+      <DependentUpon>NavigationSecondLevelItem.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customControls\Navigation\Desktop\NavigationSecondLevelItem.ascx.designer.cs">
+      <DependentUpon>NavigationSecondLevelItem.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="customControls\Navigation\Desktop\NavigationThirdLevelItem.ascx.cs">
+      <DependentUpon>NavigationThirdLevelItem.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customControls\Navigation\Desktop\NavigationThirdLevelItem.ascx.designer.cs">
+      <DependentUpon>NavigationThirdLevelItem.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="customControls\Navigation\Desktop\NavPanelIndicators.ascx.cs">
+      <DependentUpon>NavPanelIndicators.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customControls\Navigation\Desktop\NavPanelIndicators.ascx.designer.cs">
+      <DependentUpon>NavPanelIndicators.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="customControls\Navigation\Mobile\MobileNavigation.ascx.cs">
+      <DependentUpon>MobileNavigation.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customControls\Navigation\Mobile\MobileNavigation.ascx.designer.cs">
+      <DependentUpon>MobileNavigation.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="customControls\Navigation\Mobile\NavigationRootItem.ascx.cs">
+      <DependentUpon>NavigationRootItem.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customControls\Navigation\Mobile\NavigationRootItem.ascx.designer.cs">
+      <DependentUpon>NavigationRootItem.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="customControls\Navigation\Mobile\NavigationSecondLevelItem.ascx.cs">
+      <DependentUpon>NavigationSecondLevelItem.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customControls\Navigation\Mobile\NavigationSecondLevelItem.ascx.designer.cs">
+      <DependentUpon>NavigationSecondLevelItem.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="customControls\Navigation\Mobile\NavigationThirdLevelItem.ascx.cs">
+      <DependentUpon>NavigationThirdLevelItem.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customControls\Navigation\Mobile\NavigationThirdLevelItem.ascx.designer.cs">
+      <DependentUpon>NavigationThirdLevelItem.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="customControls\PageHeaderControls\Breadcrumb.ascx.cs">
+      <DependentUpon>Breadcrumb.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customControls\PageHeaderControls\Breadcrumb.ascx.designer.cs">
+      <DependentUpon>Breadcrumb.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="customControls\PageHeaderControls\PageHeader.ascx.cs">
+      <DependentUpon>PageHeader.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customControls\PageHeaderControls\PageHeader.ascx.designer.cs">
+      <DependentUpon>PageHeader.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="customControls\Pagination\Pagination.ascx.cs">
+      <DependentUpon>Pagination.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customControls\Pagination\Pagination.ascx.designer.cs">
+      <DependentUpon>Pagination.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="customControls\ProductControls\FeaturedProduct\FeaturedProduct.ascx.cs">
+      <DependentUpon>FeaturedProduct.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customControls\ProductControls\FeaturedProduct\FeaturedProduct.ascx.designer.cs">
+      <DependentUpon>FeaturedProduct.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="customControls\ProductControls\PhotoswipeContainer\PhotoswipeContainerControl.ascx.cs">
+      <DependentUpon>PhotoswipeContainerControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customControls\ProductControls\PhotoswipeContainer\PhotoswipeContainerControl.ascx.designer.cs">
+      <DependentUpon>PhotoswipeContainerControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="customControls\ProductControls\ProductCard\ProductCardActions.ascx.cs">
+      <DependentUpon>ProductCardActions.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customControls\ProductControls\ProductCard\ProductCardActions.ascx.designer.cs">
+      <DependentUpon>ProductCardActions.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="customControls\ProductControls\ProductCard\ProductCardControl.ascx.cs">
+      <DependentUpon>ProductCardControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customControls\ProductControls\ProductCard\ProductCardControl.ascx.designer.cs">
+      <DependentUpon>ProductCardControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="customControls\ProductControls\ProductCard\ProductCardFeaturesList.ascx.cs">
+      <DependentUpon>ProductCardFeaturesList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customControls\ProductControls\ProductCard\ProductCardFeaturesList.ascx.designer.cs">
+      <DependentUpon>ProductCardFeaturesList.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="customControls\ProductControls\ProductCard\ProductCardReview.ascx.cs">
+      <DependentUpon>ProductCardReview.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customControls\ProductControls\ProductCard\ProductCardReview.ascx.designer.cs">
+      <DependentUpon>ProductCardReview.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="customControls\ProductControls\ProductGallery\ProductGalleryControl.ascx.cs">
+      <DependentUpon>ProductGalleryControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customControls\ProductControls\ProductGallery\ProductGalleryControl.ascx.designer.cs">
+      <DependentUpon>ProductGalleryControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="customControls\ProductControls\ProductWidget.ascx.cs">
+      <DependentUpon>ProductWidget.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customControls\ProductControls\ProductWidget.ascx.designer.cs">
+      <DependentUpon>ProductWidget.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="customControls\Raw\HeaderRaw.ascx.cs">
+      <DependentUpon>HeaderRaw.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customControls\Raw\HeaderRaw.ascx.designer.cs">
+      <DependentUpon>HeaderRaw.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="customControls\Header\MobileHeader.ascx.cs">
+      <DependentUpon>MobileHeader.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customControls\Header\MobileHeader.ascx.designer.cs">
+      <DependentUpon>MobileHeader.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="customControls\Slider\Slider.ascx.cs">
+      <DependentUpon>Slider.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customControls\Slider\Slider.ascx.designer.cs">
+      <DependentUpon>Slider.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="customControls\Slider\SliderItem.ascx.cs">
+      <DependentUpon>SliderItem.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customControls\Slider\SliderItem.ascx.designer.cs">
+      <DependentUpon>SliderItem.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="customPage.aspx.cs">
+      <DependentUpon>customPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customPage.aspx.designer.cs">
+      <DependentUpon>customPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="error.aspx.cs">
+      <DependentUpon>error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="error.aspx.designer.cs">
+      <DependentUpon>error.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="kontakt.aspx.cs">
+      <DependentUpon>kontakt.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="kontakt.aspx.designer.cs">
+      <DependentUpon>kontakt.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="orderSuccessful.aspx.cs">
+      <DependentUpon>orderSuccessful.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="orderSuccessful.aspx.designer.cs">
+      <DependentUpon>orderSuccessful.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="product.aspx.cs">
+      <DependentUpon>product.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="product.aspx.designer.cs">
+      <DependentUpon>product.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="products.aspx.cs">
+      <DependentUpon>products.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="products.aspx.designer.cs">
+      <DependentUpon>products.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VivoShop.Master.cs">
+      <DependentUpon>VivoShop.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VivoShop.Master.designer.cs">
+      <DependentUpon>VivoShop.Master</DependentUpon>
+    </Compile>
+    <Compile Include="WebMethods.aspx.cs">
+      <DependentUpon>WebMethods.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebMethods.aspx.designer.cs">
+      <DependentUpon>WebMethods.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webShopAdmin\administrator.Master.cs">
+      <DependentUpon>administrator.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webShopAdmin\administrator.Master.designer.cs">
+      <DependentUpon>administrator.Master</DependentUpon>
+    </Compile>
+    <Compile Include="webShopAdmin\adminPanel.Master.cs">
+      <DependentUpon>adminPanel.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webShopAdmin\adminPanel.Master.designer.cs">
+      <DependentUpon>adminPanel.Master</DependentUpon>
+    </Compile>
+    <Compile Include="webShopAdmin\attribute.aspx.cs">
+      <DependentUpon>attribute.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webShopAdmin\attribute.aspx.designer.cs">
+      <DependentUpon>attribute.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webShopAdmin\attributeKimtecAttribute.aspx.cs">
+      <DependentUpon>attributeKimtecAttribute.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webShopAdmin\attributeKimtecAttribute.aspx.designer.cs">
+      <DependentUpon>attributeKimtecAttribute.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webShopAdmin\attributeKupindoAttribute.aspx.cs">
+      <DependentUpon>attributeKupindoAttribute.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webShopAdmin\attributeKupindoAttribute.aspx.designer.cs">
+      <DependentUpon>attributeKupindoAttribute.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webShopAdmin\attributes.aspx.cs">
+      <DependentUpon>attributes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webShopAdmin\attributes.aspx.designer.cs">
+      <DependentUpon>attributes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webShopAdmin\banner.aspx.cs">
+      <DependentUpon>banner.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webShopAdmin\banner.aspx.designer.cs">
+      <DependentUpon>banner.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webShopAdmin\brand.aspx.cs">
+      <DependentUpon>brand.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webShopAdmin\brand.aspx.designer.cs">
+      <DependentUpon>brand.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webShopAdmin\brands.aspx.cs">
+      <DependentUpon>brands.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webShopAdmin\brands.aspx.designer.cs">
+      <DependentUpon>brands.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webShopAdmin\categories.aspx.cs">
+      <DependentUpon>categories.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webShopAdmin\categories.aspx.designer.cs">
+      <DependentUpon>categories.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webShopAdmin\category.aspx.cs">
+      <DependentUpon>category.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webShopAdmin\category.aspx.designer.cs">
+      <DependentUpon>category.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webShopAdmin\categoryBanner.aspx.cs">
+      <DependentUpon>categoryBanner.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webShopAdmin\categoryBanner.aspx.designer.cs">
+      <DependentUpon>categoryBanner.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webShopAdmin\categoryBanners.aspx.cs">
+      <DependentUpon>categoryBanners.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webShopAdmin\categoryBanners.aspx.designer.cs">
+      <DependentUpon>categoryBanners.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webShopAdmin\companySettings.aspx.cs">
+      <DependentUpon>companySettings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webShopAdmin\companySettings.aspx.designer.cs">
+      <DependentUpon>companySettings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webShopAdmin\coupon.aspx.cs">
+      <DependentUpon>coupon.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webShopAdmin\coupon.aspx.designer.cs">
+      <DependentUpon>coupon.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webShopAdmin\coupons.aspx.cs">
+      <DependentUpon>coupons.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webShopAdmin\coupons.aspx.designer.cs">
+      <DependentUpon>coupons.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webShopAdmin\createUser.aspx.cs">
+      <DependentUpon>createUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webShopAdmin\createUser.aspx.designer.cs">
+      <DependentUpon>createUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webShopAdmin\customControls\AttributeControl.ascx.cs">
+      <DependentUpon>AttributeControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webShopAdmin\customControls\AttributeControl.ascx.designer.cs">
+      <DependentUpon>AttributeControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="webShopAdmin\customControls\CustomStatus.ascx.cs">
+      <DependentUpon>CustomStatus.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webShopAdmin\customControls\CustomStatus.ascx.designer.cs">
+      <DependentUpon>CustomStatus.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="webShopAdmin\customPage.aspx.cs">
+      <DependentUpon>customPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webShopAdmin\customPage.aspx.designer.cs">
+      <DependentUpon>customPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webShopAdmin\customPages.aspx.cs">
+      <DependentUpon>customPages.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webShopAdmin\customPages.aspx.designer.cs">
+      <DependentUpon>customPages.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webShopAdmin\default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webShopAdmin\default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webShopAdmin\dsPrint.Designer.cs" />
+    <Compile Include="webShopAdmin\dsPrint1.Designer.cs" />
+    <Compile Include="webShopAdmin\dsPrint2.Designer.cs" />
+    <Compile Include="webShopAdmin\getProducts.aspx.cs">
+      <DependentUpon>getProducts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webShopAdmin\getProducts.aspx.designer.cs">
+      <DependentUpon>getProducts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webShopAdmin\getProductsKimtec.aspx.cs">
+      <DependentUpon>getProductsKimtec.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webShopAdmin\getProductsKimtec.aspx.designer.cs">
+      <DependentUpon>getProductsKimtec.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webShopAdmin\getProductsThreeg.aspx.cs">
+      <DependentUpon>getProductsThreeg.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webShopAdmin\getProductsThreeg.aspx.designer.cs">
+      <DependentUpon>getProductsThreeg.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webShopAdmin\kimtecCategories.aspx.cs">
+      <DependentUpon>kimtecCategories.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webShopAdmin\kimtecCategories.aspx.designer.cs">
+      <DependentUpon>kimtecCategories.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webShopAdmin\kupindoMapCategories.aspx.cs">
+      <DependentUpon>kupindoMapCategories.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webShopAdmin\kupindoMapCategories.aspx.designer.cs">
+      <DependentUpon>kupindoMapCategories.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webShopAdmin\kupindoSettings.aspx.cs">
+      <DependentUpon>kupindoSettings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webShopAdmin\kupindoSettings.aspx.designer.cs">
+      <DependentUpon>kupindoSettings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webShopAdmin\login.aspx.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webShopAdmin\login.aspx.designer.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webShopAdmin\order.aspx.cs">
+      <DependentUpon>order.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webShopAdmin\order.aspx.designer.cs">
+      <DependentUpon>order.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webShopAdmin\orders-graph.aspx.cs">
+      <DependentUpon>orders-graph.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webShopAdmin\orders-graph.aspx.designer.cs">
+      <DependentUpon>orders-graph.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webShopAdmin\orders.aspx.cs">
+      <DependentUpon>orders.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webShopAdmin\orders.aspx.designer.cs">
+      <DependentUpon>orders.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webShopAdmin\product.aspx.cs">
+      <DependentUpon>product.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webShopAdmin\product.aspx.designer.cs">
+      <DependentUpon>product.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webShopAdmin\productCopyData.aspx.cs">
+      <DependentUpon>productCopyData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webShopAdmin\productCopyData.aspx.designer.cs">
+      <DependentUpon>productCopyData.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webShopAdmin\products.aspx.cs">
+      <DependentUpon>products.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webShopAdmin\products.aspx.designer.cs">
+      <DependentUpon>products.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webShopAdmin\promotion.aspx.cs">
+      <DependentUpon>promotion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webShopAdmin\promotion.aspx.designer.cs">
+      <DependentUpon>promotion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webShopAdmin\promotions.aspx.cs">
+      <DependentUpon>promotions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webShopAdmin\promotions.aspx.designer.cs">
+      <DependentUpon>promotions.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webShopAdmin\reports\rptOrder.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptOrder.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="webShopAdmin\reports\rptOrder1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="webShopAdmin\retail.aspx.cs">
+      <DependentUpon>retail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webShopAdmin\retail.aspx.designer.cs">
+      <DependentUpon>retail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webShopAdmin\retails.aspx.cs">
+      <DependentUpon>retails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webShopAdmin\retails.aspx.designer.cs">
+      <DependentUpon>retails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webShopAdmin\slider.aspx.cs">
+      <DependentUpon>slider.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webShopAdmin\slider.aspx.designer.cs">
+      <DependentUpon>slider.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webShopAdmin\sliders.aspx.cs">
+      <DependentUpon>sliders.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webShopAdmin\sliders.aspx.designer.cs">
+      <DependentUpon>sliders.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webShopAdmin\unusedImagesSettings.aspx.cs">
+      <DependentUpon>unusedImagesSettings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webShopAdmin\unusedImagesSettings.aspx.designer.cs">
+      <DependentUpon>unusedImagesSettings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webShopAdmin\uploadImage.ashx.cs">
+      <DependentUpon>uploadImage.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="webShopAdmin\user.aspx.cs">
+      <DependentUpon>user.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webShopAdmin\user.aspx.designer.cs">
+      <DependentUpon>user.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webShopAdmin\users.aspx.cs">
+      <DependentUpon>users.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webShopAdmin\users.aspx.designer.cs">
+      <DependentUpon>users.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webShopAdmin\WebMethods.aspx.cs">
+      <DependentUpon>WebMethods.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webShopAdmin\WebMethods.aspx.designer.cs">
+      <DependentUpon>WebMethods.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bundleconfig.json" />
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
+    <Content Include="fonts\stroyka\stroyka.ttf" />
+    <Content Include="fonts\stroyka\stroyka.woff" />
+    <None Include="packages.config" />
+    <Content Include="VivoShop.Master" />
+    <Content Include="scss\blocks\_block-banner.scss" />
+    <Content Include="scss\blocks\_block-brands.scss" />
+    <Content Include="scss\blocks\_block-categories.scss" />
+    <Content Include="scss\blocks\_block-empty.scss" />
+    <Content Include="scss\blocks\_block-features.scss" />
+    <Content Include="scss\blocks\_block-finder.scss" />
+    <Content Include="scss\blocks\_block-map.scss" />
+    <Content Include="scss\blocks\_block-posts.scss" />
+    <Content Include="scss\blocks\_block-product-columns.scss" />
+    <Content Include="scss\blocks\_block-products-carousel.scss" />
+    <Content Include="scss\blocks\_block-products.scss" />
+    <Content Include="scss\blocks\_block-sidebar.scss" />
+    <Content Include="scss\blocks\_block-slideshow.scss" />
+    <Content Include="scss\blocks\_block.scss" />
+    <Content Include="scss\blog\_comment.scss" />
+    <Content Include="scss\blog\_comments-list.scss" />
+    <Content Include="scss\blog\_post-author.scss" />
+    <Content Include="scss\blog\_post-header.scss" />
+    <Content Include="scss\blog\_post.scss" />
+    <Content Include="scss\blog\_posts-list.scss" />
+    <Content Include="scss\blog\_posts-view.scss" />
+    <Content Include="scss\blog\_related-posts.scss" />
+    <Content Include="scss\common\_animations.scss" />
+    <Content Include="scss\common\_base.scss" />
+    <Content Include="scss\common\_document.scss" />
+    <Content Include="scss\common\_fake-svg-icon.scss" />
+    <Content Include="scss\common\_page-header.scss" />
+    <Content Include="scss\common\_site.scss" />
+    <Content Include="scss\components\_account-nav.scss" />
+    <Content Include="scss\components\_alert.scss" />
+    <Content Include="scss\components\_badge.scss" />
+    <Content Include="scss\components\_block-header.scss" />
+    <Content Include="scss\components\_breadcrumb.scss" />
+    <Content Include="scss\components\_buttons.scss" />
+    <Content Include="scss\components\_card-table.scss" />
+    <Content Include="scss\components\_card.scss" />
+    <Content Include="scss\components\_filters-button.scss" />
+    <Content Include="scss\components\_forms.scss" />
+    <Content Include="scss\components\_input-check-color.scss" />
+    <Content Include="scss\components\_input-check.scss" />
+    <Content Include="scss\components\_input-number.scss" />
+    <Content Include="scss\components\_input-radio-color.scss" />
+    <Content Include="scss\components\_input-radio-label.scss" />
+    <Content Include="scss\components\_input-radio.scss" />
+    <Content Include="scss\components\_layout-switcher.scss" />
+    <Content Include="scss\components\_modal.scss" />
+    <Content Include="scss\components\_nouislider.scss" />
+    <Content Include="scss\components\_pagination.scss" />
+    <Content Include="scss\components\_post-card.scss" />
+    <Content Include="scss\components\_product-card.scss" />
+    <Content Include="scss\components\_rating.scss" />
+    <Content Include="scss\components\_select2.scss" />
+    <Content Include="scss\components\_share-links.scss" />
+    <Content Include="scss\components\_tags.scss" />
+    <Content Include="scss\components\_tooltip.scss" />
+    <Content Include="scss\components\_typography.scss" />
+    <Content Include="scss\filters\_filter-categories-alt.scss" />
+    <Content Include="scss\filters\_filter-categories.scss" />
+    <Content Include="scss\filters\_filter-color.scss" />
+    <Content Include="scss\filters\_filter-list.scss" />
+    <Content Include="scss\filters\_filter-price.scss" />
+    <Content Include="scss\filters\_filter.scss" />
+    <Content Include="scss\footer\_footer-contacts.scss" />
+    <Content Include="scss\footer\_footer-links.scss" />
+    <Content Include="scss\footer\_footer-newsletter.scss" />
+    <Content Include="scss\footer\_site-footer.scss" />
+    <Content Include="scss\footer\_totop.scss" />
+    <Content Include="scss\header\_account-menu.scss" />
+    <Content Include="scss\header\_departments.scss" />
+    <Content Include="scss\header\_dropcart.scss" />
+    <Content Include="scss\header\_indicator.scss" />
+    <Content Include="scss\header\_megamenu.scss" />
+    <Content Include="scss\header\_menu.scss" />
+    <Content Include="scss\header\_mobile-header.scss" />
+    <Content Include="scss\header\_mobile-links.scss" />
+    <Content Include="scss\header\_mobilemenu.scss" />
+    <Content Include="scss\header\_nav-links.scss" />
+    <Content Include="scss\header\_nav-panel.scss" />
+    <Content Include="scss\header\_search--location--header.scss" />
+    <Content Include="scss\header\_search--location--indicator.scss" />
+    <Content Include="scss\header\_search--location--mobile-header.scss" />
+    <Content Include="scss\header\_search.scss" />
+    <Content Include="scss\header\_site-header.scss" />
+    <Content Include="scss\header\_suggestions.scss" />
+    <Content Include="scss\header\_topbar-dropdown.scss" />
+    <Content Include="scss\header\_topbar-link.scss" />
+    <Content Include="scss\header\_topbar.scss" />
+    <Content Include="scss\mixins\_buttons.scss" />
+    <Content Include="scss\mixins\_card.scss" />
+    <Content Include="scss\mixins\_direction.scss" />
+    <Content Include="scss\mixins\_hacks.scss" />
+    <Content Include="scss\mixins\_post-card.scss" />
+    <Content Include="scss\mixins\_preloader.scss" />
+    <Content Include="scss\mixins\_product-card.scss" />
+    <Content Include="scss\pages\_about-us.scss" />
+    <Content Include="scss\pages\_checkout.scss" />
+    <Content Include="scss\pages\_contact-us.scss" />
+    <Content Include="scss\pages\_faq.scss" />
+    <Content Include="scss\pages\_not-found.scss" />
+    <Content Include="scss\shop\_address-card.scss" />
+    <Content Include="scss\shop\_addresses-list.scss" />
+    <Content Include="scss\shop\_cart-table.scss" />
+    <Content Include="scss\shop\_cart.scss" />
+    <Content Include="scss\shop\_category-card.scss" />
+    <Content Include="scss\shop\_compare-table.scss" />
+    <Content Include="scss\shop\_dashboard.scss" />
+    <Content Include="scss\shop\_product--layout--columnar.scss" />
+    <Content Include="scss\shop\_product-gallery.scss" />
+    <Content Include="scss\shop\_product-tabs.scss" />
+    <Content Include="scss\shop\_product.scss" />
+    <Content Include="scss\shop\_products-list.scss" />
+    <Content Include="scss\shop\_products-view.scss" />
+    <Content Include="scss\shop\_profile-card.scss" />
+    <Content Include="scss\shop\_quickview.scss" />
+    <Content Include="scss\shop\_review.scss" />
+    <Content Include="scss\shop\_reviews-list.scss" />
+    <Content Include="scss\shop\_reviews-view.scss" />
+    <Content Include="scss\shop\_shop-layout.scss" />
+    <Content Include="scss\shop\_spec.scss" />
+    <Content Include="scss\shop\_view-options.scss" />
+    <Content Include="scss\shop\_wishlist.scss" />
+    <Content Include="scss\style.ltr.scss" />
+    <Content Include="scss\style.rtl.scss" />
+    <Content Include="scss\style.scss" />
+    <Content Include="scss\themes\_black.scss" />
+    <Content Include="scss\themes\_blue.scss" />
+    <Content Include="scss\themes\_green.scss" />
+    <Content Include="scss\themes\_red.scss" />
+    <Content Include="scss\widgets\_widget-aboutus.scss" />
+    <Content Include="scss\widgets\_widget-categories.scss" />
+    <Content Include="scss\widgets\_widget-comments.scss" />
+    <Content Include="scss\widgets\_widget-filters.scss" />
+    <Content Include="scss\widgets\_widget-newsletter.scss" />
+    <Content Include="scss\widgets\_widget-posts.scss" />
+    <Content Include="scss\widgets\_widget-products.scss" />
+    <Content Include="scss\widgets\_widget-search.scss" />
+    <Content Include="scss\widgets\_widget-tags.scss" />
+    <Content Include="scss\widgets\_widget.scss" />
+    <Content Include="scss\_custom-variables.scss" />
+    <Content Include="scss\_custom.scss" />
+    <Content Include="scss\_functions.scss" />
+    <Content Include="scss\_svg.scss" />
+    <Content Include="scss\_variables.scss" />
+    <Content Include="vendor\bootstrap\css\bootstrap-grid.css.map" />
+    <Content Include="vendor\bootstrap\css\bootstrap-grid.min.css.map" />
+    <Content Include="vendor\bootstrap\css\bootstrap-reboot.css.map" />
+    <Content Include="vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
+    <Content Include="vendor\bootstrap\css\bootstrap.css.map" />
+    <Content Include="vendor\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="vendor\bootstrap\js\bootstrap.bundle.js.map" />
+    <Content Include="vendor\bootstrap\js\bootstrap.bundle.min.js.map" />
+    <Content Include="vendor\bootstrap\js\bootstrap.js.map" />
+    <Content Include="vendor\bootstrap\js\bootstrap.min.js.map" />
+    <Content Include="vendor\fontawesome\webfonts\fa-brands-400.eot" />
+    <Content Include="vendor\fontawesome\webfonts\fa-brands-400.ttf" />
+    <Content Include="vendor\fontawesome\webfonts\fa-brands-400.woff" />
+    <Content Include="vendor\fontawesome\webfonts\fa-brands-400.woff2" />
+    <Content Include="vendor\fontawesome\webfonts\fa-regular-400.eot" />
+    <Content Include="vendor\fontawesome\webfonts\fa-regular-400.ttf" />
+    <Content Include="vendor\fontawesome\webfonts\fa-regular-400.woff" />
+    <Content Include="vendor\fontawesome\webfonts\fa-regular-400.woff2" />
+    <Content Include="vendor\fontawesome\webfonts\fa-solid-900.eot" />
+    <Content Include="vendor\fontawesome\webfonts\fa-solid-900.ttf" />
+    <Content Include="vendor\fontawesome\webfonts\fa-solid-900.woff" />
+    <Content Include="vendor\fontawesome\webfonts\fa-solid-900.woff2" />
+    <Content Include="vendor\jquery\jquery.min.map" />
+    <Content Include="vendor\jquery\jquery.slim.min.map" />
+    <Content Include="vendor\owl-carousel\LICENSE" />
+    <Content Include="vendor\owl-carousel\README.md" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <Content Include="Web.sitemap" />
+    <Content Include="webShopAdmin\administrator.Master" />
+    <Content Include="webShopAdmin\adminPanel.Master" />
+    <Content Include="webShopAdmin\css\bootstrap-theme.css.map" />
+    <Content Include="webShopAdmin\css\bootstrap.css.map" />
+    <Content Include="webShopAdmin\dsPrint.xsc">
+      <DependentUpon>dsPrint.xsd</DependentUpon>
+    </Content>
+    <None Include="webShopAdmin\dsPrint.xsd" />
+    <Content Include="webShopAdmin\dsPrint.xss">
+      <DependentUpon>dsPrint.xsd</DependentUpon>
+    </Content>
+    <Content Include="webShopAdmin\fonts\fontawesome-webfont.eot" />
+    <Content Include="webShopAdmin\fonts\fontawesome-webfont.ttf" />
+    <Content Include="webShopAdmin\fonts\fontawesome-webfont.woff" />
+    <Content Include="webShopAdmin\fonts\FontAwesome.otf" />
+    <Content Include="webShopAdmin\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="webShopAdmin\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="webShopAdmin\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="webShopAdmin\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="webShopAdmin\pdf\1-2016.pdf" />
+    <Content Include="webShopAdmin\pdf\3-2016.pdf" />
+    <Content Include="webShopAdmin\pdf\4-2016.pdf" />
+    <Content Include="webShopAdmin\uploadImage.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="webShopAdmin\reports\rptOrder.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptOrder.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>59746</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:59746/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

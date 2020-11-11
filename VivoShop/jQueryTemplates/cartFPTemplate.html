@@ -1,0 +1,24 @@
+﻿<div class="dropcart__product">
+    <div class="dropcart__product-image">
+        <a href="${url}">
+            <img src="${imageUrl}" alt="" />
+        </a>
+    </div>
+    <div class="dropcart__product-info">
+        <div class="dropcart__product-name">
+            <a href="${url}">${name}</a>
+        </div>
+        <ul class="dropcart__product-options">
+            <li>Šifra: ${code}</li>
+        </ul>
+        <div class="dropcart__product-meta">
+            <span class="dropcart__product-quantity">${quantity}</span> *
+            <span class="dropcart__product-price">${formatCurrency(parseFloat(userPrice))}</span><small> RSD</small>
+        </div>
+    </div>
+    <button type="button" class="dropcart__product-remove btn btn-light btn-sm btn-svg-icon" onclick="CartFpDeleteProduct(${ productID }, false, event)">
+        <svg width="10px" height="10px">
+            <use xlink:href="/images/sprite.svg#cross-10"></use>
+        </svg>
+    </button>
+</div>

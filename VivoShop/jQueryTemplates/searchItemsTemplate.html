@@ -1,0 +1,14 @@
+﻿<li class="suggestions__item">
+    <a class="suggestions__item-link" href="/pretraga?s=${searchText}&c=${categoryID}">
+        <!--<div class="suggestions__item-image">
+            <img src="" alt="" />
+        </div>-->
+        <div class="suggestions__item-info">
+            <div class="suggestions__item-name">{{if url != '' }} Pronađi '${searchText}' u kategoriji {{else}} Pronađi na celom {{/if}} <strong>{{if url != ''}} ${fullName} {{else}} ${name} {{/if}}</strong>{{if count > 0 }} (${count}) {{/if}}</div>
+            <!--<div class="suggestions__item-meta">{{if count > 0 }} (${count}) {{/if}}</div>-->
+        </div>
+        <!--<div class="suggestions__item-price">
+
+        </div>-->
+    </a>
+</li>
