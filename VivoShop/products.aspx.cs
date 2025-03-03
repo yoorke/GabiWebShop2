@@ -1,11 +1,16 @@
 ﻿using eshopBE;
 using eshopBL;
+using eshopUtilities;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
+using VivoShop.customControls.BlockSidebarControls;
 
 namespace VivoShop
 {
@@ -19,9 +24,10 @@ namespace VivoShop
         private string _priceTo;
         private string _attributes;
         private string[] _attributesIDs = new string[] { };
-        private int _pageSize = 16;
+        private int _pageSize = 15;
         private int _currentPage = 0;
         private int _totalPages;
+        private Category _category;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -37,8 +43,11 @@ namespace VivoShop
                 loadIntoForm();
                 loadCategory();
 
-                loadProducts();
+                if(showSubcategories(_category.CategoryID) == 0 || _category.ShowProductsFromSubCategories)
+                    loadProducts();
             }
+
+            createCanonicalUrl();
         }
 
         private void checkQueryString()
@@ -78,19 +87,45 @@ namespace VivoShop
             if (_categoryUrl.EndsWith("/"))
                 _categoryUrl = _categoryUrl.Substring(0, _categoryUrl.Length - 1);
 
-            Category category = new CategoryBL().GetCategoryByUrl(_categoryUrl);
+            Category category = new CategoryBL().GetCategoryByUrl(_categoryUrl, true);
 
-            pageHeader.Title = category.Name;
+            if(category == null)
+            {
+                //redirectIfNoExist(Request.RawUrl);
+                new Redirect().RedirectCategoryUrl(Request.RawUrl);
+                Server.Transfer("~/not-found.aspx");
+            }
+            redirectByUrl(category.FullUrl);
+            _category = category;
+
+            if (category != null)
+            { 
+                pageHeader.Title = category.Name;
+                blockSidebar.Category = category;
+                blockSidebar.CategoryUrl = _categoryUrl;
+
+                ViewState.Add("categoryUrl", _categoryUrl);
+            }
+            else
+                Server.Transfer("~/not-found.aspx");
         }
 
         private void loadProducts()
         {
             List<string> brands = new List<string>();
+            foreach (string brandID in _brandsIDs)
+                brands.Add(brandID);
             List<AttributeValue> attributes = new List<AttributeValue>();
+            foreach (string attributeValueID in _attributesIDs)
+            {
+                attributes.Add(new AttributeValue(int.Parse(attributeValueID.Split('-')[1]), "-1", int.Parse(attributeValueID.Split('-')[0]), 0, string.Empty, 0));
+            }
+            //attributes = getFilterAttribueValues();
             string priceFrom = "0";
             string priceTo = "9999999999";
 
-            List<Product> products = new ProductBL().GetProducts(_categoryUrl, brands, attributes, _sort, priceFrom, priceTo);
+            //List<Product> products1 = new ProductBL().GetProducts(_categoryUrl, brands, attributes, _sort, priceFrom, priceTo);
+            List<ProductFPView> products = new ProductViewBL().GetProducts(_categoryUrl, brands, attributes, _sort, priceFrom, priceTo);
 
             PagedDataSource pagedDataSource = new PagedDataSource();
             pagedDataSource.DataSource = products;
@@ -107,12 +142,16 @@ namespace VivoShop
                 pgrPagination.DoPaging();
                 rptProducts.DataSource = pagedDataSource;
                 rptProducts.DataBind();
+
+                lblProductsNumber.Text = "Prikazano " + (products.Count() > _pageSize ? _pageSize.ToString() : products.Count().ToString()) + " od " + products.Count().ToString();
             }
             else
             {
                 rptProducts.DataSource = null;
                 rptProducts.DataSourceID = null;
                 rptProducts.DataBind();
+
+                lblProductsNumber.Text = "Prikazano 0 od 0";
             }
         }
 
@@ -123,9 +162,9 @@ namespace VivoShop
             cmbSort.Items.Add(new ListItem("Ceni rastuće", "priceAsc"));
             cmbSort.SelectedValue = _sort;
 
-            cmbPageSize.Items.Add("16");
-            cmbPageSize.Items.Add("32");
-            cmbPageSize.Items.Add("96");
+            cmbPageSize.Items.Add("15");
+            cmbPageSize.Items.Add("30");
+            cmbPageSize.Items.Add("99");
             cmbPageSize.SelectedValue = _pageSize.ToString();
         }
 
@@ -137,6 +176,90 @@ namespace VivoShop
         protected void cmbPageSize_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void createCanonicalUrl()
+        {
+            if(!string.IsNullOrWhiteSpace(ViewState["categoryUrl"].ToString()))
+            {
+                HtmlLink link = new HtmlLink();
+                link.Attributes.Add("rel", "canonical");
+                link.Attributes.Add("href", ConfigurationManager.AppSettings["webShopUrl"] + "/proizvodi/" + ViewState["categoryUrl"]);
+                Header.Controls.Add(link);
+            }
+        }
+
+        private int showSubcategories(int categoryID)
+        {
+            List<Category> subCategories = new CategoryBL().GetAllSubCategories(categoryID, false);
+            rptSubCategories.DataSource = subCategories;
+            rptSubCategories.DataBind();
+
+            divSubCategories.Visible = subCategories != null && subCategories.Count > 0;
+
+            return subCategories != null ? subCategories.Count : 0;
+        }
+
+        private void redirect(string categoryUrl)
+        {
+            if(bool.Parse(ConfigurationManager.AppSettings["redirectCategoryByUrl"]) && !Request.IsLocal)
+            {
+                //new Redirect().RedirectCategoryUrl(Request.RawUrl);
+                string url = Request.Url.AbsoluteUri.Contains('?') ? Request.Url.AbsoluteUri.Substring(0, Request.Url.AbsoluteUri.IndexOf('?')) : Request.Url.AbsoluteUri;
+                string queryString = Request.Url.AbsoluteUri.Contains('?') ? Request.Url.AbsoluteUri.Substring(Request.Url.AbsoluteUri.IndexOf('?') + 1) : string.Empty;
+
+                if (!(ConfigurationManager.AppSettings["webShopUrl"] + categoryUrl).Equals(url))
+                {
+                    ErrorLog.LogMessage(DateTime.Now.ToString() + " - Redirected: " + Request.Url.AbsoluteUri + ", to: " + ConfigurationManager.AppSettings["webShopUrl"] + categoryUrl + (queryString != string.Empty ? "?" : string.Empty) + queryString);
+                    Response.RedirectPermanent(ConfigurationManager.AppSettings["webShopUrl"] + categoryUrl + (queryString != string.Empty ? "?" : string.Empty) + queryString);
+                }
+                //if(!(ConfigurationManager.AppSettings["webShopUrl"] + categoryUrl).Equals(Request.Url.AbsoluteUri))
+                //{
+                    //Response.RedirectPermanent(ConfigurationManager.AppSettings["webShopUrl"] + categoryUrl);
+                    //ErrorLog.LogMessage(DateTime.Now.ToString() + " - Redirected: " + Request.Url.AbsoluteUri + ", to: " + ConfigurationManager.AppSettings["webShopUrl"] + categoryUrl);
+                //}
+            }
+        }
+
+        private void redirectIfNoExist(string url)
+        {
+            Dictionary<string, string> urls = new Dictionary<string, string>();
+
+            string line;
+            using (StreamReader sr = new StreamReader(Server.MapPath("~/categoriesRedirect.txt")))
+            {
+                while ((line = sr.ReadLine()) != null)
+                    urls.Add(line.Split(',')[0], line.Split(',')[1]);
+            }
+
+            string queryString = url.Contains("?") ? url.Substring(url.IndexOf("?") + 1) : url;
+            url = url.Contains("?") ? url.Substring(0, url.IndexOf("?")) : url;
+
+            if (urls.ContainsKey(url))
+                Response.RedirectPermanent(urls[url] + (queryString != string.Empty ? ("?" + queryString) : queryString));
+        }
+
+        private void redirectByUrl(string url)
+        {
+            if(bool.Parse(ConfigurationManager.AppSettings["redirectCategoryByUrl"]) && !Request.IsLocal)
+            {
+                if(!Request.Url.AbsolutePath.Equals(url))
+                {
+                    ErrorLog.LogMessage("Category redirected from: " + Request.Url.AbsolutePath + " to: " + url);
+                    Response.RedirectPermanent(ConfigurationManager.AppSettings["webShopUrl"] + url + Request.Url.Query);
+                }
+            }
+        }
+
+        private List<AttributeValue> getFilterAttribueValues()
+        {
+            List<AttributeValue> attributeValues = new List<AttributeValue>();
+            //foreach(RepeaterItem repeaterItem in ((BlockSidebar)blockSidebar).Controls)
+            //{
+
+            //}
+
+            return attributeValues;
         }
     }
 }

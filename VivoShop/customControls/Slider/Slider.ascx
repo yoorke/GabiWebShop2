@@ -3,10 +3,10 @@
 
 <!-- .block-slideshow -->
 <div class="block-slideshow block-slideshow--layout--with-departments block">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-3 d-none d-lg-block"></div>
-            <div class="col-12 col-lg-9">
+            <div id="divOffset" runat="server" class="col-lg-3 d-none d-lg-block"></div>
+            <div id="divSlider" runat="server" class="col-12 col-lg-9">
                 <div class="block-slideshow__body">
                     <div class="owl-carousel">
 

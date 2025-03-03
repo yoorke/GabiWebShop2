@@ -8,7 +8,7 @@
     <Vivo:DesktopHeader runat="server" IsHomepage="false" />
 
     <div class="site__body">
-        <Vivo:PageHeader ID="pageHeader" runat="server" Title="Porudžbina uspešno izvršena" />
+        <Vivo:PageHeader ID="pageHeader" runat="server" Title="" />
         <div class="block">
             <div class="container">
                 <div class="row">

@@ -13,6 +13,15 @@ namespace VivoShop.customControls.Navigation {
     public partial class DesktopNavigation {
         
         /// <summary>
+        /// divDepartmentsNav control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divDepartmentsNav;
+        
+        /// <summary>
         /// divDepartments control.
         /// </summary>
         /// <remarks>
@@ -29,5 +38,14 @@ namespace VivoShop.customControls.Navigation {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater rptMainCategories;
+        
+        /// <summary>
+        /// HorizontalMenu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::VivoShop.customControls.Navigation.HorizontalMenu HorizontalMenu;
     }
 }

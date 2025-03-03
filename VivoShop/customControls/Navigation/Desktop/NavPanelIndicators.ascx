@@ -1,17 +1,27 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="NavPanelIndicators.ascx.cs" Inherits="VivoShop.customControls.Navigation.NavPanelIndicators" %>
 <div class="nav-panel__indicators">
     <div class="indicator">
-        <a href="wishlist.html" class="indicator__button">
+        <a href="/lista-zelja" class="indicator__button" title="Lista želja" data-toggle="tooltip" data-placement="top" data-animation="true">
             <span class="indicator__area">
                 <svg width="20px" height="20px">
                     <use xlink:href="/images/sprite.svg#heart-20"></use>
                 </svg>
-                <span class="indicator__value">0</span>
+                <span id="wl_pc" class="indicator__value">0</span>
             </span>
         </a>
     </div>
-    <div class="indicator indicator--trigger--click">
-        <a href="cart.html" class="indicator__button cart__button">
+    <div class="indicator">
+        <a href="/poredjenje-proizvoda" class="indicator__button" data-toggle="tooltip" data-placement="top" title="Poređenje proizvoda" data-animation="true">
+            <span class="indicator__area">
+                <svg width="20px" height="20px">
+                    <use xlink:href="/images/sprite.svg#compare-16"></use>
+                </svg>
+                <span id="compare_pc" class="indicator__value">0</span>
+            </span>
+        </a>
+    </div>
+    <div class="indicator indicator--trigger--click" id="cart__indicator">
+        <a href="cart.html" class="indicator__button cart__button" data-toggle="tooltip" data-placement="top" title="Korpa" data-animation="true">
             <span class="indicator__area">
                 <svg width="20px" height="20px">
                     <use xlink:href="/images/sprite.svg#cart-20"></use>
@@ -102,7 +112,9 @@
                             </tr>--%>
                             <tr>
                                 <th>Ukupno</th>
-                                <td id="nav-panel__cart-total">$5,902.00</td><td><small> RSD</small></td>
+                                <td id="nav-panel__cart-total">
+                                    <%--$5,902.00--%>0,00
+                                </td><td><small> RSD</small></td>
                             </tr>
                         </table>
                     </div>
@@ -115,7 +127,7 @@
             <!-- .dropcart / end -->
         </div>
     </div>
-    <div class="indicator indicator--trigger--click">
+    <%--<div class="indicator indicator--trigger--click">
         <a href="account-login.html" class="indicator__button">
             <span class="indicator__area">
                 <svg width="20px" height="20px">
@@ -166,5 +178,5 @@
                 </ul>
             </div>
         </div>
-    </div>
+    </div>--%>
 </div>

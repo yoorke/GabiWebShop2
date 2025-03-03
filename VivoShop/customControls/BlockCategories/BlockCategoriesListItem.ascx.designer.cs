@@ -13,6 +13,15 @@ namespace VivoShop.customControls.BlockCategories {
     public partial class BlockCategoriesListItem {
         
         /// <summary>
+        /// lnkImage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink lnkImage;
+        
+        /// <summary>
         /// imgCategoryImage control.
         /// </summary>
         /// <remarks>
@@ -20,6 +29,15 @@ namespace VivoShop.customControls.BlockCategories {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image imgCategoryImage;
+        
+        /// <summary>
+        /// lnkCategory control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink lnkCategory;
         
         /// <summary>
         /// lblCategoryName control.
@@ -38,6 +56,15 @@ namespace VivoShop.customControls.BlockCategories {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater rptSubCategories;
+        
+        /// <summary>
+        /// lnkShowAll control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink lnkShowAll;
         
         /// <summary>
         /// lblProductsCount control.

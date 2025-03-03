@@ -32,8 +32,8 @@
                                         </p>
                                         <p>
                                             <strong>Gabi boje - boje i lakovi</strong><br />
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur suscipit suscipit mi, non
-                                            tempor nulla finibus eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                            <%--Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur suscipit suscipit mi, non
+                                            tempor nulla finibus eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit.--%>
                                         </p>
                                     </div>
                                 </div>

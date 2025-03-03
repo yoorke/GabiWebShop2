@@ -22,6 +22,15 @@ namespace VivoShop.customControls.ProductControls {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divProductCard;
         
         /// <summary>
+        /// lnkEditProduct control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink lnkEditProduct;
+        
+        /// <summary>
         /// divBadge control.
         /// </summary>
         /// <remarks>
@@ -83,5 +92,50 @@ namespace VivoShop.customControls.ProductControls {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::VivoShop.customControls.ProductControls.ProductCard.ProductCardActions productActions;
+        
+        /// <summary>
+        /// lblCanBeDeliveredText control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblCanBeDeliveredText;
+        
+        /// <summary>
+        /// spanDelivery control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl spanDelivery;
+        
+        /// <summary>
+        /// spanInStore control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl spanInStore;
+        
+        /// <summary>
+        /// spanInCity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl spanInCity;
+        
+        /// <summary>
+        /// lblProductID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField lblProductID;
     }
 }

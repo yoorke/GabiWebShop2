@@ -1,7 +1,9 @@
 ﻿using eshopBE;
 using eshopBL;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -30,7 +32,26 @@ namespace VivoShop.customControls.BannerControls
 
         private void setValues()
         {
-            BannerItem bannerItem = new BannerBL().GetBanner(_position);
+            BannerItem bannerItem = new BannerItem();
+
+            if(Cache[ID] == null)
+            {
+                if (File.Exists(Server.MapPath("~/banner" + ID + ".json")))
+                    bannerItem = JsonConvert.DeserializeObject<BannerItem>(File.OpenText(Server.MapPath("~/banner" + ID + ".json")).ReadToEnd());
+                else
+                { 
+                    bannerItem = new BannerBL().GetBanner(_position);
+                    using (TextWriter tw = new StreamWriter(Server.MapPath("banner" + ID + ".json"), false))
+                        tw.Write(JsonConvert.SerializeObject(bannerItem));
+                }
+                Cache.Add(ID, bannerItem, null, DateTime.Now.AddMinutes(60), System.Web.Caching.Cache.NoSlidingExpiration, System.Web.Caching.CacheItemPriority.Normal, null);
+            }
+            else
+            {
+                bannerItem = (BannerItem)Cache[ID];
+            }
+
+            //BannerItem bannerItem = new BannerBL().GetBanner(_position);
             if (bannerItem != null)
             {
                 lnkBanner.NavigateUrl = bannerItem.Url;

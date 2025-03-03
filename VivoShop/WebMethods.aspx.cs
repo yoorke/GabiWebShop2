@@ -14,6 +14,8 @@ using System.Web.Services;
 using eshopBL;
 using Newtonsoft.Json;
 using System.IO;
+using System.Collections.Generic;
+using eshopUtilities;
 
 namespace VivoShop
 {
@@ -87,11 +89,14 @@ namespace VivoShop
         }
 
         [WebMethod()]
-        public static string AddToCart(int productID)
+        public static string AddToCart(int productID, int quantity = 1)
         {
             double webPrice = new ProductBL().GetActualPrice(productID);
             CartBL cartBL = new CartBL();
-            cartBL.AddProductToCart(productID, System.Web.HttpContext.Current.Session["cartID"].ToString(), 1, webPrice, webPrice);
+            cartBL.AddProductToCart(productID, System.Web.HttpContext.Current.Session["cartID"].ToString(), quantity, webPrice, webPrice, -1);
+
+            ErrorLog.LogMessage("Product added to cart. ProductID: " + productID.ToString() + ", cartID: " + HttpContext.Current.Session["cartID"].ToString());
+
             return JsonConvert.SerializeObject((cartBL.GetProductsCount(System.Web.HttpContext.Current.Session["cartID"].ToString()).ToString() + "|" + string.Format("{0:N2}", cartBL.GetTotal(System.Web.HttpContext.Current.Session["cartID"].ToString()))).Split('|'));
         }
 
@@ -177,7 +182,16 @@ namespace VivoShop
         [WebMethod()]
         public static string GetProductsSearchData(string searchText)
         {
-            return JsonConvert.SerializeObject(new ProductBL().SearchProductsSimple(searchText, "product.name", -1, 5));
+            return JsonConvert.SerializeObject(new ProductBL().SearchProductsSimple(searchText, "product.name", -1, 10));
+        }
+
+        [WebMethod()]
+        public static int GetCompareProductCount()
+        {
+            if ((List<int>)HttpContext.Current.Session["compare"] == null)
+                return 0;
+
+            return ((List<int>)HttpContext.Current.Session["compare"]).Count;
         }
     }
 }

@@ -22,6 +22,33 @@ namespace VivoShop {
         protected global::VivoShop.customControls.PageHeaderControls.PageHeader pageHeader;
         
         /// <summary>
+        /// blockSidebar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::VivoShop.customControls.BlockSidebarControls.BlockSidebar blockSidebar;
+        
+        /// <summary>
+        /// divSubCategories control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divSubCategories;
+        
+        /// <summary>
+        /// rptSubCategories control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rptSubCategories;
+        
+        /// <summary>
         /// lblProductsNumber control.
         /// </summary>
         /// <remarks>

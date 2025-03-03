@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="TopBar.ascx.cs" Inherits="VivoShop.customControls.Header.TopBar" %>
 <!-- .topbar -->
         <div class="site-header__topbar topbar">
-            <div class="topbar__container container">
+            <div class="topbar__container container-fluid">
                 <div class="topbar__row">
                     <div class="topbar__item topbar__item--link">
                         <a class="topbar-link" href="/o-nama">O nama</a>
@@ -13,12 +13,21 @@
                         <a class="topbar-link" href="/gde-se-nalazimo">Gde se nalazimo</a>
                     </div>
                     <div class="topbar__item topbar__item--link">
-                        <a class="topbar-link" href="track-order.html">Praćenje porudžbine</a>
+                        <a class="topbar-link" href="/pracenje-porudzbine">Praćenje porudžbine</a>
                     </div>
                     <div class="topbar__item topbar__item--link">
                         <a class="topbar-link" href="/blog">Blog</a>
                     </div>
                     <div class="topbar__spring"></div>
+                    <asp:LoginView ID="loginView" runat="server">
+                        <AnonymousTemplate>
+                            <div class="topbar__item">
+                                <div class="topbar-dropdown">
+                                    <a class="topbar-dropdown__btn d-flex justify-content-center align-items-center" href="/prijava">Prijava</a>
+                                </div>
+                            </div>
+                        </AnonymousTemplate>
+                        <LoggedInTemplate>
                     <div class="topbar__item">
                         <div class="topbar-dropdown">
                             <button class="topbar-dropdown__btn" type="button">
@@ -35,38 +44,38 @@
                                         <li class="menu__item">
                                             <!-- This is a synthetic element that allows to adjust the vertical offset of the submenu using CSS. -->
                                             <div class="menu__item-submenu-offset"></div>
-                                            <a class="menu__item-link" href="account-dashboard.html">Kontrolna tabla
+                                            <a class="menu__item-link" href="/moj-nalog">Kontrolna tabla
                                             </a>
                                         </li>
                                         <li class="menu__item">
                                             <!-- This is a synthetic element that allows to adjust the vertical offset of the submenu using CSS. -->
                                             <div class="menu__item-submenu-offset"></div>
-                                            <a class="menu__item-link" href="account-profile.html">Izmena profila
+                                            <a class="menu__item-link" href="/moj-profil">Izmena profila
                                             </a>
                                         </li>
                                         <li class="menu__item">
                                             <!-- This is a synthetic element that allows to adjust the vertical offset of the submenu using CSS. -->
                                             <div class="menu__item-submenu-offset"></div>
-                                            <a class="menu__item-link" href="account-orders.html">Istorija poručivanja
+                                            <a class="menu__item-link" href="/istorija-porucivanja">Istorija poručivanja
                                             </a>
                                         </li>
-                                        <li class="menu__item">
+                                        <%--<li class="menu__item">
                                             <!-- This is a synthetic element that allows to adjust the vertical offset of the submenu using CSS. -->
                                             <div class="menu__item-submenu-offset"></div>
                                             <a class="menu__item-link" href="account-addresses.html">Adrese
                                             </a>
-                                        </li>
+                                        </li>--%>
                                         <li class="menu__item">
                                             <!-- This is a synthetic element that allows to adjust the vertical offset of the submenu using CSS. -->
                                             <div class="menu__item-submenu-offset"></div>
-                                            <a class="menu__item-link" href="account-password.html">Izmena šifre
+                                            <a class="menu__item-link" href="/izmena-sifre">Izmena šifre
                                             </a>
                                         </li>
                                         <li class="menu__item">
                                             <!-- This is a synthetic element that allows to adjust the vertical offset of the submenu using CSS. -->
                                             <div class="menu__item-submenu-offset"></div>
-                                            <a class="menu__item-link" href="account-login.html">Izloguj se
-                                            </a>
+                                            <asp:Button ID="btnLogout" runat="server" CssClass="menu__item-link" href="account-login.html" Text="Izloguj se" OnClick="btnLogout_Click">
+                                            </asp:Button>
                                         </li>
                                     </ul>
                                 </div>
@@ -74,10 +83,12 @@
                             </div>
                         </div>
                     </div>
+                            </LoggedInTemplate>
+                        </asp:LoginView>
                     <div class="topbar__item">
                         <div class="topbar-dropdown">
                             <button class="topbar-dropdown__btn" type="button">
-                                Valuta: <span class="topbar__item-value">DIN</span>
+                                Valuta: <span class="topbar__item-value">RSD</span>
                                 <svg width="7px" height="5px">
                                     <use xlink:href="/images/sprite.svg#arrow-rounded-down-7x5"></use>
                                 </svg>

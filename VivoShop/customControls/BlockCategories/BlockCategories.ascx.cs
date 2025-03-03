@@ -1,4 +1,6 @@
-﻿using eshopBL;
+﻿using eshopBE;
+using eshopBL;
+using eshopUtilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +22,21 @@ namespace VivoShop.customControls.BlockCategories
 
         private void loadCategories()
         {
-            rptCategories.DataSource = new CategoryBL().GetNestedCategoriesList();
+            List<CategoryView> categories = new List<CategoryView>();
+
+            if (Cache["MainMenu"] == null)
+            {
+                ErrorLog.LogMessage("Block categories create cache");
+                //rptCategories.DataSource = new CategoryBL().GetNestedCategoriesList();
+                 categories = new CategoryViewBL().GetNestedCategoriesList();
+                Cache.Add("MainMenu", categories, null, DateTime.Now.AddMinutes(60), System.Web.Caching.Cache.NoSlidingExpiration, System.Web.Caching.CacheItemPriority.Normal, null);
+            }
+            else
+            {
+                categories = (List<CategoryView>)Cache["MainMenu"];
+            }
+
+            rptCategories.DataSource = categories;
             rptCategories.DataBind();
         }
     }

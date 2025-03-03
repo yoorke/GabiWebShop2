@@ -31,6 +31,12 @@ $local-dot-size: $local-dots-height - $local-dots-padding * 2;
             }
         }
 
+        @media(max-width: breakpoint(sm-end)) {
+            .owl-dots {
+                bottom: -20px;
+            }
+        }
+
         .owl-dot {
             width: $local-dot-size;
             height: $local-dot-size;
@@ -45,6 +51,7 @@ $local-dot-size: $local-dots-height - $local-dots-padding * 2;
                 background: $block-slideshow-dot-hover-color;
             }
         }
+
         .owl-dot.active {
             background: $block-slideshow-dot-active-color;
         }
@@ -182,9 +189,10 @@ $local-dot-size: $local-dots-height - $local-dots-padding * 2;
 
     @media (min-width: breakpoint(lg-start)) {
         .block-slideshow__body {
-            @include direction {
-                #{$margin-inline-start}: (30px - $local-margin) * -1;
-            }
+            //DJ//
+            //@include direction {
+                //#{$margin-inline-start}: (30px - $local-margin) * -1;
+            //}
         }
     }
 

@@ -123,6 +123,8 @@
         */
         $('.search').each(function(index, element) {
             let xhr;
+            let xhr1;
+            let timer;
             const search = $(element);
             const input = search.find('.search__input');
             const suggestions = search.find('.search__suggestions');
@@ -139,9 +141,9 @@
             const setSuggestion = function(html) {
                 if (html) {
                     //suggestions.html(html.d);
-                    $('.header__search__list').find('li').remove();
+                    
                     $.get('/jQueryTemplates/searchItemsTemplate.html', null, function (searchItemsTemplate) {
-                        $.tmpl(searchItemsTemplate, JSON.parse(html.d)).appendTo($('.header__search__list'));
+                        $.tmpl(searchItemsTemplate, JSON.parse(html.d)).appendTo($(element).find('.header__search__list'));
                     });
                 }
                 search.toggleClass('search--has-suggestions', !!html);
@@ -164,34 +166,45 @@
                     // Abort previous AJAX request.
                     xhr.abort();
                 }
+                if (xhr1) {
+                    xhr1.abort();
+                }
 
                 if (input.val() && input.val().length > 2) {
                     // YOUR AJAX REQUEST HERE.
-                    xhr = $.ajax({
-                        type: 'POST',
-                        //url: 'suggestions.html',
-                        url: '/WebMethods.aspx/GetSearchData',
-                        data: JSON.stringify({ "searchText": input.val() }),
-                        contentType: 'application/json;charset=utf-8',
-                        dataType: 'json',
-                        success: function(data) {
-                            xhr = null;
-                            setSuggestion(data);
-                        }
-                    });
-                    $.ajax({
-                        type: 'POST',
-                        url: '/WebMethods.aspx/GetProductsSearchData',
-                        data: JSON.stringify({ "searchText": input.val() }),
-                        contentType: 'application/json;charset=utf-8',
-                        dataType: 'json',
-                        success: function (data) {
-                            $('.header_search_product_list').find('li').remove();
-                            $.get('/jQueryTemplates/searchProductItemsTemplate.html', null, function (searchItemsTemplate) {
-                                $.tmpl(searchItemsTemplate, JSON.parse(data.d)).appendTo($('.header_search_product_list'));
-                            });
-                        }
-                    });
+                    if (timer)
+                        clearTimeout(timer);
+                    $(element).find('.header__search__list').find('li').remove();
+                    $(element).find('.header__search__product__list').find('li').remove();
+
+                    timer = setTimeout(function () {
+                        xhr = $.ajax({
+                            type: 'POST',
+                            //url: 'suggestions.html',
+                            url: '/WebMethods.aspx/GetSearchData',
+                            data: JSON.stringify({ "searchText": input.val() }),
+                            contentType: 'application/json;charset=utf-8',
+                            dataType: 'json',
+                            success: function (data) {
+                                xhr = null;
+                                setSuggestion(data);
+                            }
+                        });
+                        xhr1 = $.ajax({
+                            type: 'POST',
+                            url: '/WebMethods.aspx/GetProductsSearchData',
+                            data: JSON.stringify({ "searchText": input.val() }),
+                            contentType: 'application/json;charset=utf-8',
+                            dataType: 'json',
+                            success: function (data) {
+                                xhr1 = null;
+                                
+                                $.get('/jQueryTemplates/searchProductItemsTemplate.html', null, function (searchItemsTemplate) {
+                                    $.tmpl(searchItemsTemplate, JSON.parse(data.d)).appendTo($(element).find('.header__search__product__list'));
+                                });
+                            }
+                        });
+                    }, 500);
                 } else {
                     // Remove suggestions.
                     setSuggestion('');

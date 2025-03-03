@@ -16,13 +16,14 @@
     <Vivo:DesktopHeader runat="server" IsHomepage="true" />
 
     <div class="site__body">
-        <Vivo:Slider runat="server" SliderID="1"></Vivo:Slider>
+        
+        <Vivo:Slider runat="server" SliderID="1" ShowVerticalMenu="false"></Vivo:Slider>
         <Vivo:BlockFeatures runat="server"></Vivo:BlockFeatures>
-        <Vivo:BlockProductsCarousel runat="server" Type="Grid4" Title="Izdvojeni proizvodi"></Vivo:BlockProductsCarousel>
-        <Vivo:BlockBanner runat="server" Position="FP5"></Vivo:BlockBanner>
-        <Vivo:BlockProducts runat="server"></Vivo:BlockProducts>
+        <Vivo:BlockProductsCarousel ID="blockProductsCarousel1" runat="server" NumberOfProducts="8" OrderByType="Random" Type="Grid4" Title="Izdvojeni proizvodi" CategoryID="10174" CacheData="false"></Vivo:BlockProductsCarousel>
+        <Vivo:BlockBanner ID="banner1" runat="server" Position="FP5"></Vivo:BlockBanner>
+        <Vivo:BlockProducts ID="blockProducts1" runat="server" NumberOfProducts="7" OrderByType="Order"></Vivo:BlockProducts>
         <Vivo:BlockCategories runat="server" />
-        <Vivo:BlockProductsCarousel runat="server" Type="Horizontal" Title="Novi proizvodi" ></Vivo:BlockProductsCarousel>
+        <Vivo:BlockProductsCarousel ID="blockProductsCarousel2" runat="server" NumberOfProducts="6" OrderByType="New" Type="Horizontal" Title="Novi proizvodi" ></Vivo:BlockProductsCarousel>
         <Vivo:BlockBrands runat="server" />
         <Vivo:BlockProductsColumns runat="server" />
     </div>

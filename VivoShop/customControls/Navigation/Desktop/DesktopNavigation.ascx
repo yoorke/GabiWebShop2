@@ -6,9 +6,9 @@
 <div class="site-header__nav-panel">
     <!-- data-sticky-mode - one of [pullToShow, alwaysOnTop] -->
     <div class="nav-panel nav-panel--sticky" data-sticky-mode="pullToShow">
-        <div class="nav-panel__container container">
+        <div class="nav-panel__container container-fluid">
             <div class="nav-panel__row">
-                <div class="nav-panel__departments">
+                <div id="divDepartmentsNav" runat="server" class="nav-panel__departments" visible="false">
                     <!-- .departments -->
                     <div id="divDepartments" runat="server" data-departments-fixed-by=".block-slideshow">
                         <div class="departments__body">
@@ -42,10 +42,10 @@
                 </div>
 
                 <%--Horizontal Menu --%>
-                <Vivo:HorizontalMenu runat="server"></Vivo:HorizontalMenu>
+                <Vivo:HorizontalMenu runat="server" ID="HorizontalMenu" Visible="false"></Vivo:HorizontalMenu>
 
                 <%--NavPanel Indicators--%>
-                <Vivo:NavPanelIndicators runat="server"></Vivo:NavPanelIndicators>
+                <%--<Vivo:NavPanelIndicators runat="server"></Vivo:NavPanelIndicators>--%>
 
             </div>
         </div>

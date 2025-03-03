@@ -24,6 +24,13 @@ namespace VivoShop
                 CustomPage customPage = new CustomPageBL().GetCustomPage(url);
                 pageHeader.Title = customPage.Title;
                 lblContent.Text = customPage.Content;
+
+                List<Product> products = new List<Product>();
+                ProductBL productBL = new ProductBL();
+                foreach (CustomPageProduct customPageProduct in customPage.Products)
+                    products.Add(productBL.GetProduct(customPageProduct.ProductID, string.Empty, false, string.Empty));
+                rptProducts.DataSource = products;
+                rptProducts.DataBind();
             }
         }
     }

@@ -1,3 +1,42 @@
 // -------------------------
 // --- You can add your custom CSS here and it will overwrite template styles.
 // -------------------------
+.form-error-control{
+    color: $validator-error-color;
+    font-size: 0.9em;
+}
+
+input[type="radio"]{
+    margin: 0 10px;
+}
+
+.btn[disabled]{
+    cursor: not-allowed;
+    opacity: .65;
+}
+
+.btn[disabled]:hover{
+    background-color: $accent-color;
+    color: $accent-opposite-color;
+    border-color: $accent-color;
+}
+
+.worker-box{
+    position: absolute;
+    top: 7px;
+    left: 7px;
+    opacity: 0.65;
+    font-size: 2em;
+}
+
+.owl-carousel {
+    .owl-item {
+        img {
+            image-rendering: -webkit-optimize-contrast;
+        }
+    }
+}
+
+.block-slideshow__slide-image {
+    background-position: center;
+}

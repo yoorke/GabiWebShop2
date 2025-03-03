@@ -10,9 +10,9 @@ namespace VivoShop.customControls.BlockProductsCarousel
 {
     public partial class BlockProductCarouselColumn : System.Web.UI.UserControl
     {
-        private List<Product> _products;
+        private List<ProductFPView> _products;
 
-        public List<Product> Products
+        public List<ProductFPView> Products
         {
             get { return _products; }
             set

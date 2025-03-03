@@ -11,30 +11,41 @@ using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
+using System.Web.Hosting;
+using eshop.PaymentProcessor.BL.Interfaces;
+using eshop.PaymentProcessor.BL;
 
 namespace VivoShop
 {
     public partial class checkout : System.Web.UI.Page
     {
         private Settings _settings;
+        private OrderBL _orderBL;
+        private int _deliveryServiceID = 1;
 
         public Settings Settings { get { return _settings; } }
 
         public checkout()
         {
             _settings = new SettingsBL().GetSettings();
+            _orderBL = new OrderBL(new DeliveryCostCalculatorByWeight());
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (new CartBL().GetProductsCount(Session["cartID"].ToString()) <= 0)
+                Response.Redirect("~/korpa");
             if(!Page.IsPostBack)
             { 
                 loadIntoForm();
                 loadCart();
+                createOrder(-1, -1, -1);
 
                 if (HttpContext.Current.User.Identity.IsAuthenticated)
                     loadUser();
             }
+
+            //btnOrder.Enabled = chkTermsAndConditions.Checked;
         }
 
         protected void rdbDelivery_SelectedIndexChanged(object sender, EventArgs e)
@@ -51,10 +62,16 @@ namespace VivoShop
             paymentMethods.Add(new Payment(2, "Ček", "Kupac plaća čekom."));
             paymentMethods.Add(new Payment(3, "Uplatnica", "Kupac plaća uplatnicom u pošti ili banci. Roba se šalje nakon evidentirane uplate."));
             paymentMethods.Add(new Payment(4, "Virmansko plaćanje po predračunu", ""));
-            paymentMethods.Add(new Payment(5, "Kartica", ""));
+            if(bool.Parse(ConfigurationManager.AppSettings["enableCardPayment"]))
+            {
+                paymentMethods.Add(new Payment(5, "Kartica", "Plaćanje online platnom karticom."));
+            }
 
             rptPaymentMethods.DataSource = paymentMethods;
             rptPaymentMethods.DataBind();
+
+            txtCompanyName.Text = "fizičko lice";
+            txtTaxID.Text = "000000000";
         }
 
         protected void rptPaymentMethods_ItemDataBound(object sender, RepeaterItemEventArgs e)
@@ -74,18 +91,70 @@ namespace VivoShop
 
         protected void btnOrder_Click(object sender, EventArgs e)
         {
-            int userID = createUser();
-            Order order = createOrder(userID, getPaymentID(), getDeliveryID());
+            //if(chkTermsAndConditions.Checked)
+            //{
+            try
+            { 
+                int userID = createUser();
+                Order order = createOrder(userID, getPaymentID(), getDeliveryID());
+                saveOrder(order);
 
-            Settings settings = new SettingsBL().GetSettings();
+                Settings settings = new SettingsBL().GetSettings();
 
-            Common.SendOrderConfirmationMail(txtEmail.Text, txtFirstName.Text + " " + txtLastName.Text, order, settings);
-            Common.SendNewOrderNotification(order.OrderID.ToString(), order, settings);
+                if (order.Payment.PaymentID != 5)
+                {
+                    try
+                    {
+                        HostingEnvironment.QueueBackgroundWorkItem(bw =>
+                        {
+                            Common.SendOrderConfirmationMail(txtEmail.Text, txtFirstName.Text + " " + txtLastName.Text, order, settings);
+                            Common.SendNewOrderNotification(order.OrderID.ToString(), order, settings);
+                        });
+                    }
+                    catch (Exception ex)
+                    {
+                        ErrorLog.LogError(ex);
+                    }
 
-            new CartBL().ClearItems(Session["cartID"].ToString());
-            new CartBL().RemoveCoupon(Session["cartID"].ToString());
+                    new CartBL().ClearItems(Session["cartID"].ToString());
+                    new CartBL().RemoveCoupon(Session["cartID"].ToString());
 
-            Page.Response.Redirect("/porudzbina-uspesna");
+                    if(Session["orderID"] != null)
+                    {
+                        Session.Remove("orderID");
+                    }
+                }
+
+                if (bool.Parse(ConfigurationManager.AppSettings["enableCardPayment"]) && order.Payment.PaymentID == 5)
+                {
+                    ICardPaymentBL cardPaymentBL = new IntesaCardPaymentBL();
+
+                    HttpResponse response = HttpContext.Current.Response;
+
+                    double deliveryCost = 0;
+                    if (bool.Parse(ConfigurationManager.AppSettings["calculateDelivery"]))
+                    {
+                        deliveryCost = order.Packages.Sum(package => package.DeliveryCost);     
+                    }
+                    else
+                    {
+                        if(getDeliveryID() == 1 && order.TotalValue < settings.FreeDeliveryTotalValue)
+                        {
+                            deliveryCost = settings.DeliveryCost;
+                        }
+                    }
+
+                    response.Write(cardPaymentBL.GetPostRedirectedTemplate(order.TotalValue + deliveryCost, order.Code, Server.MapPath("~/templates/paymentFormTemplate.html")));
+                    response.End();
+                }
+
+                    Page.Response.Redirect("/porudzbina-uspesna");
+            }
+            catch(BLException ex)
+            {
+                setStatus(ex.Message, "danger");
+            }
+            //}
         }
 
         private int getPaymentID()
@@ -141,9 +210,25 @@ namespace VivoShop
             return items;
         }
 
-        private Order createOrder(int userID, int paymentID, int deliveryID)
+        private Order createOrder(int userID, int paymentID, int deliveryID, int deliveryServiceID = 3)
         {
             Order order = new Order();
+
+            int orderID = 0;
+            if(Session["orderID"] != null && int.TryParse(Session["orderID"].ToString(), out orderID))
+            {
+                //order.OrderID = orderID;
+                order = new OrderBL().GetOrder(orderID);
+            }
+
+            int activeDeliveryServiceID = new DeliveryServiceBL().GetActiveDeliveryServiceID();
+            if(activeDeliveryServiceID > 0)
+            {
+                deliveryServiceID = activeDeliveryServiceID;
+            }
+
+            order.CreatePackageForEverySupplier = bool.Parse(ConfigurationManager.AppSettings["createPackageForEverySupplier"]);
+
             order.Date = DateTime.Now.ToUniversalTime();
             order.Firstname = txtFirstName.Text;
             order.Lastname = txtLastName.Text;
@@ -153,18 +238,41 @@ namespace VivoShop
             order.Email = txtEmail.Text;
             order.Items = getItems();
             order.User = new User(userID, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, null, string.Empty, string.Empty, DateTime.Now, string.Empty, 0, -1);
-            order.Name = txtCompanyName.Text;
+            order.Name = rdbUserType.SelectedValue == "2" ? txtCompanyName.Text : string.Empty;
             //order.Pib = txtPib.Text;
-            order.Payment = new Payment(paymentID, string.Empty);
-            order.Delivery = new Delivery(deliveryID, string.Empty);
+            //order.Payment = ((List<Payment>)rptPaymentMethods.DataSource).Find(item => item.PaymentID == paymentID);    //new Payment(paymentID, string.Empty);
+            order.Payment = getSelectedPayment(paymentID);
+            order.Delivery = getSelectedDelivery(deliveryID);//new Delivery(deliveryID, string.Empty);
             order.Coupon = new Coupon(new CartBL().GetCartCoupon(Session["cartID"].ToString()), string.Empty, 0, string.Empty, DateTime.Now, DateTime.Now, null, null);
             order.OrderStatus = new OrderStatus(1, string.Empty, false);
             order.Zip = txtZip.Text;
             order.Comment = txtComment.Text;
             order.CartID = Session["cartID"].ToString();
-            order.Pib = txtTaxID.Text;
+            order.Pib = rdbUserType.SelectedValue == "2" ? txtTaxID.Text : string.Empty;
+            order.Confirmed = order.Payment.PaymentID != 5 ? true : false;
 
-            new OrderBL().SaveOrder(order);
+            if(bool.Parse(ConfigurationManager.AppSettings["calculateDelivery"]))
+            {
+                foreach (var package in order.Packages)
+                {
+                    package.DeliveryCost = _orderBL.CalculateDeliveryCost(package, _settings, deliveryServiceID);
+                }
+
+                double deliveryCost = order.Packages.Sum(package => package.DeliveryCost);
+                lblDeliveryCost.Text = string.Format("{0:N2}", deliveryCost);
+                lblTotal.Text = string.Format("{0:N2}", order.TotalValue + deliveryCost);
+            }
+
+            //_orderBL.SaveOrder(order);
+
+            return order;
+        }
+
+        private Order saveOrder(Order order)
+        {
+            _orderBL.SaveOrder(order);
+
+            Session.Add("OrderID", order.OrderID);
 
             return order;
         }
@@ -205,11 +313,15 @@ namespace VivoShop
             double total = 0;
             double saving = 0;
             bool freeDelivery = false;
+            double totalWeight = 0;
+            bool productsHaveWeight = true;
 
             foreach(DataRow row in cartItems.Rows)
             {
                 cartTotal += double.Parse(row["productPrice"].ToString()) * double.Parse(row["quantity"].ToString());
                 discount += double.Parse(row["productPrice"].ToString()) * double.Parse(row["quantity"].ToString()) - double.Parse(row["userPrice"].ToString()) * double.Parse(row["quantity"].ToString());
+                totalWeight += double.Parse(row["totalWeight"].ToString());
+                productsHaveWeight = productsHaveWeight && double.Parse(row["totalWeight"].ToString()) > 0;
             }
 
             shopTotal = cartTotal - discount;
@@ -230,7 +342,9 @@ namespace VivoShop
             else
             {
                 deliveryCost = 0;
-                lblDeliveryCost.Text = getDeliveryID() == 1 && shopTotal < _settings.FreeDeliveryTotalValue ? "Po cenovniku kurirske službe" : "0,00";
+                lblDeliveryCost.Text = getDeliveryID() == 1 && shopTotal < _settings.FreeDeliveryTotalValue ? 
+                                (productsHaveWeight ? string.Format("{0:N2}", getDeliveryPrice(totalWeight)) : "Po cenovniku kurirske službe") : 
+                                "0,00";
             }
 
             total = shopTotal + deliveryCost;
@@ -244,6 +358,69 @@ namespace VivoShop
             lblTotal.Text = string.Format("{0:N2}", total);
             if (!bool.Parse(ConfigurationManager.AppSettings["calculateDelivery"]) && getDeliveryID() == 1 && shopTotal < _settings.FreeDeliveryTotalValue)
                 lblTotalComment.Text += " + troškovi dostave";
+
+            if (productsHaveWeight)
+            {
+                lblTotalWeight.Text = string.Format("{0:N2}", totalWeight);
+                totalWeightRow.Visible = true;
+            }
+        }
+
+        protected void rdbUserType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(rdbUserType.SelectedValue == "1")
+            {
+                divCompany.Style.Add("display", "none");
+                txtCompanyName.Text = "fizičko lice";
+                txtTaxID.Text = "000000000";
+            }
+            else
+            {
+                divCompany.Style.Add("display", "flex");
+                txtCompanyName.Text = string.Empty;
+                txtTaxID.Text = string.Empty;
+            }
+        }
+
+        private void setStatus(string message, string type)
+        {
+            PageNotification.Message = message;
+            PageNotification.Type = type;
+            PageNotification.Show();
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "setFocus", "scrollToNotification()", true);
+        }
+
+        private double getDeliveryPrice(double weight)
+        {
+            return new DeliveryServiceBL().GetDeliveryPriceByWeight(3, weight);
+        }
+
+        private Delivery getSelectedDelivery(int deliveryID)
+        {
+            switch(deliveryID)
+            {
+                case 1: return new Delivery(deliveryID, "Dostava kurirskom službom");
+                case 2: return new Delivery(deliveryID, "Preuzimanje u radnji");
+            }
+            return new Delivery();
+        }
+
+        private Payment getSelectedPayment(int paymentID)
+        {
+            Payment payment = new Payment() { PaymentID = paymentID, Name = string.Empty, Description = string.Empty };
+
+            foreach(RepeaterItem item in rptPaymentMethods.Items.Cast<RepeaterItem>())
+            {
+                HiddenField lblPayment = (HiddenField)item.FindControl("lblPaymentID");
+                if(lblPayment.Value == paymentID.ToString())
+                {
+                    payment.Name = ((Literal)item.FindControl("lblPaymentMethodName")).Text;
+                    payment.Description = ((Literal)item.FindControl("lblPaymentMethodDescription")).Text;
+                    break;
+                }
+            }
+
+            return payment;
         }
     }
 }

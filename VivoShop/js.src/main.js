@@ -76,7 +76,8 @@
             nav: false,
             dots: true,
             loop: true,
-            rtl: isRTL()
+            rtl: isRTL(),
+            autoplay: true
         });
     });
 
@@ -178,11 +179,13 @@
 
             button.addClass('product-card__quickview--preload');
 
+            let productID = button.closest('.product-card').find('[id*=lblProductID]').val();
             let xhr = null;
             // timeout ONLY_FOR_DEMO!
             const timeout = setTimeout(function() {
                 xhr = $.ajax({
-                    url: 'quickview.html',
+                    //url: 'quickview.html',
+                    url: '/product.aspx?product=' + '123-' + productID,
                     success: function(data) {
                         quickview.cancelPreviousModal = function() {};
                         button.removeClass('product-card__quickview--preload');
@@ -801,4 +804,11 @@
             }
         }, passiveSupported ? {passive: true} : false);
     });
+
+    
 })(jQuery);
+
+//mobile notification
+function mobileNotification_click(element) {
+    $(element).closest('.notification').hide();
+}

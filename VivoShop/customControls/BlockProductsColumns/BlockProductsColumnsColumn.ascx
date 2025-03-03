@@ -1,5 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="BlockProductsColumnsColumn.ascx.cs" Inherits="VivoShop.customControls.BlockProductsColumns.BlockProductsColumnsColumn" %>
-<%@ Register Src="~/customControls/ProductControls/ProductCard/ProductCardControl.ascx" TagName="ProductCard" TagPrefix="Vivo" %>
+<%@ Register Src="~/customControls/ProductControls/ProductCard/ProductCardControlFPView.ascx" TagName="ProductCard" TagPrefix="Vivo" %>
 
 <div class="col-4">
     <div class="block-header">

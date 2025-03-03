@@ -10,9 +10,9 @@ namespace VivoShop.customControls.Navigation
 {
     public partial class NavigationSecondLevelItem : System.Web.UI.UserControl
     {
-        private Category _category;
+        private CategoryView _category;
 
-        public Category Category
+        public CategoryView Category
         {
             get { return _category; }
             set
@@ -31,7 +31,7 @@ namespace VivoShop.customControls.Navigation
             lnkLink.Text = _category.Name;
             lnkLink.NavigateUrl = _category.Url;
 
-            rptSubCategoriesLevel3Col1.DataSource = _category.SubCategory;
+            rptSubCategoriesLevel3Col1.DataSource = _category.SubCategories;
             rptSubCategoriesLevel3Col1.DataBind();
         }
     }

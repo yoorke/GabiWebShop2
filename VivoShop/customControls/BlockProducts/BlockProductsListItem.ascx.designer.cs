@@ -19,6 +19,6 @@ namespace VivoShop.customControls.BlockProducts {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::VivoShop.customControls.ProductControls.ProductCardControl productCard;
+        protected global::VivoShop.customControls.ProductControls.ProductCardControlFPView productCard;
     }
 }

@@ -13,6 +13,24 @@ namespace VivoShop.customControls.Slider {
     public partial class Slider {
         
         /// <summary>
+        /// divOffset control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divOffset;
+        
+        /// <summary>
+        /// divSlider control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divSlider;
+        
+        /// <summary>
         /// rptSlider control.
         /// </summary>
         /// <remarks>

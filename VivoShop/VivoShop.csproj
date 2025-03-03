@@ -14,7 +14,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>VivoShop</RootNamespace>
     <AssemblyName>VivoShop</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort />
@@ -60,13 +60,28 @@
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="eshopBE">
+    <Reference Include="eshop.Import.BL">
+      <HintPath>..\..\..\WebShop - Framework\WebShopFramework\eshop.Import.BL\bin\Debug\eshop.Import.BL.dll</HintPath>
+    </Reference>
+    <Reference Include="eshop.PaymentProcessor.BE">
+      <HintPath>..\..\..\WebShop - Framework\WebShopFramework\eshop.PaymentProcessor.BE\bin\Debug\eshop.PaymentProcessor.BE.dll</HintPath>
+    </Reference>
+    <Reference Include="eshop.PaymentProcessor.BL">
+      <HintPath>..\..\..\WebShop - Framework\WebShopFramework\eshop.PaymentProcessor.BL\bin\Debug\eshop.PaymentProcessor.BL.dll</HintPath>
+    </Reference>
+    <Reference Include="eshopBE, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\WebShop - Framework\WebShopFramework\eshopBE\bin\Debug\eshopBE.dll</HintPath>
     </Reference>
-    <Reference Include="eshopBL">
+    <Reference Include="eshopBL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\WebShop - Framework\WebShopFramework\eshopBL\bin\Debug\eshopBL.dll</HintPath>
     </Reference>
-    <Reference Include="eshopUtilities">
+    <Reference Include="eshopBLInterfaces">
+      <HintPath>..\..\..\WebShop - Framework\WebShopFramework\eshopBEInterfaces\bin\Debug\eshopBLInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="eshopUtilities, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\WebShop - Framework\WebShopFramework\eshopUtilities\bin\Debug\eshopUtilities.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
@@ -84,9 +99,9 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
@@ -99,8 +114,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="404.aspx" />
+    <Content Include="account\orderHistory.aspx" />
+    <Content Include="account\orderItems.aspx" />
+    <Content Include="account\passwordChange.aspx" />
+    <Content Include="account\profile.aspx" />
+    <Content Include="account\user-dashboard.aspx" />
     <Content Include="cart.aspx" />
+    <Content Include="cenovnikDostave.aspx" />
     <Content Include="checkout.aspx" />
+    <Content Include="compare.aspx" />
     <Content Include="css\bundle.css" />
     <Content Include="css\bundle.min.css">
       <DependentUpon>bundle.css</DependentUpon>
@@ -109,6 +132,8 @@
     <Content Include="css\style.min.css">
       <DependentUpon>style.css</DependentUpon>
     </Content>
+    <Content Include="css\style.purified.min.css" />
+    <Content Include="customControls\account\accountNavigation.ascx" />
     <Content Include="customControls\BannerControls\BlockBanner.ascx" />
     <Content Include="customControls\BlockBrands\BlockBrands.ascx" />
     <Content Include="customControls\BlockCategories\BlockCategories.ascx" />
@@ -133,26 +158,33 @@
     <Content Include="customControls\Header\Desktop\HeaderMiddleContainer.ascx" />
     <Content Include="customControls\Navigation\Desktop\DesktopNavigation.ascx" />
     <Content Include="customControls\Navigation\Desktop\HorizontalMenu.ascx" />
+    <Content Include="customControls\Navigation\Desktop\HorizontalMenuSecondLevel.ascx" />
+    <Content Include="customControls\Navigation\Desktop\HorizontalMenuThirdLevelItem.ascx" />
+    <Content Include="customControls\Navigation\Desktop\HorizotnalMenuSecondLevelItem.ascx" />
     <Content Include="customControls\Navigation\Desktop\NavigationItemColumn.ascx" />
     <Content Include="customControls\Navigation\Desktop\NavigationRootItem.ascx" />
     <Content Include="customControls\Navigation\Desktop\NavigationSecondLevelItem.ascx" />
     <Content Include="customControls\Navigation\Desktop\NavigationThirdLevelItem.ascx" />
     <Content Include="customControls\Navigation\Desktop\NavPanelIndicators.ascx" />
     <Content Include="customControls\Navigation\Mobile\MobileNavigation.ascx" />
+    <Content Include="customControls\Navigation\Mobile\MobileNotification\MobileNotification.ascx" />
     <Content Include="customControls\Navigation\Mobile\NavigationRootItem.ascx" />
     <Content Include="customControls\Navigation\Mobile\NavigationSecondLevelItem.ascx" />
     <Content Include="customControls\Navigation\Mobile\NavigationThirdLevelItem.ascx" />
     <Content Include="customControls\PageHeaderControls\Breadcrumb.ascx" />
     <Content Include="customControls\PageHeaderControls\PageHeader.ascx" />
+    <Content Include="customControls\PageNotification\PageNotification.ascx" />
     <Content Include="customControls\Pagination\Pagination.ascx" />
     <Content Include="customControls\ProductControls\FeaturedProduct\FeaturedProduct.ascx" />
     <Content Include="customControls\ProductControls\PhotoswipeContainer\PhotoswipeContainerControl.ascx" />
     <Content Include="customControls\ProductControls\ProductCard\ProductCardActions.ascx" />
+    <Content Include="customControls\ProductControls\ProductCard\ProductCardControlFPView.ascx" />
     <Content Include="customControls\ProductControls\ProductCard\ProductCardControl.ascx" />
     <Content Include="customControls\ProductControls\ProductCard\ProductCardFeaturesList.ascx" />
     <Content Include="customControls\ProductControls\ProductCard\ProductCardReview.ascx" />
     <Content Include="customControls\ProductControls\ProductGallery\ProductGalleryControl.ascx" />
     <Content Include="customControls\ProductControls\ProductWidget.ascx" />
+    <Content Include="customControls\QuickView\QuickViewModal.ascx" />
     <Content Include="customControls\Raw\HeaderRaw.ascx" />
     <Content Include="customControls\Header\MobileHeader.ascx" />
     <Content Include="customControls\Slider\Slider.ascx" />
@@ -256,6 +288,7 @@
     <Content Include="images\teammates\teammate-1.jpg" />
     <Content Include="images\teammates\teammate-2.jpg" />
     <Content Include="images\teammates\teammate-3.jpg" />
+    <Content Include="index-maintenance.html" />
     <Content Include="jQueryTemplates\cartFPTemplate.html" />
     <Content Include="jQueryTemplates\searchItemsTemplate.html" />
     <Content Include="jQueryTemplates\searchProductItemsTemplate.html" />
@@ -269,9 +302,28 @@
       <DependentUpon>bundle.js</DependentUpon>
     </Content>
     <Content Include="kontakt.aspx" />
+    <Content Include="login.aspx" />
+    <Content Include="not-found.aspx" />
+    <Content Include="notificationTemplates\footerTemplate.html" />
+    <Content Include="notificationTemplates\headerTemplate.html" />
+    <Content Include="notificationTemplates\paymentConfirmationTemplate.html" />
+    <Content Include="notificationTemplates\paymentFailedTemplate.html" />
+    <Content Include="notificationTest.aspx" />
     <Content Include="orderSuccessful.aspx" />
+    <Content Include="passwordChanged.aspx" />
+    <Content Include="passwordReset.aspx" />
+    <Content Include="passwordResetMailSent.aspx" />
+    <Content Include="passwordResetRequest.aspx" />
+    <Content Include="paymentResponse.aspx" />
     <Content Include="product.aspx" />
     <Content Include="products.aspx" />
+    <Content Include="quickview.html" />
+    <Content Include="quickviewProduct.aspx" />
+    <Content Include="categoryRedirectUrls.txt" />
+    <Content Include="redirect.txt" />
+    <Content Include="search.aspx" />
+    <Content Include="templates\paymentFormTemplate.html" />
+    <Content Include="templates\paymentFormTemplate.min.html" />
     <Content Include="vendor\bootstrap\css\bootstrap-grid.css" />
     <Content Include="vendor\bootstrap\css\bootstrap-grid.min.css" />
     <Content Include="vendor\bootstrap\css\bootstrap-reboot.css" />
@@ -485,8 +537,51 @@
     <Content Include="webShopAdmin\user.aspx" />
     <Content Include="webShopAdmin\users.aspx" />
     <Content Include="webShopAdmin\WebMethods.aspx" />
+    <Content Include="wishList.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="404.aspx.cs">
+      <DependentUpon>404.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="404.aspx.designer.cs">
+      <DependentUpon>404.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="account\orderHistory.aspx.cs">
+      <DependentUpon>orderHistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="account\orderHistory.aspx.designer.cs">
+      <DependentUpon>orderHistory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="account\orderItems.aspx.cs">
+      <DependentUpon>orderItems.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="account\orderItems.aspx.designer.cs">
+      <DependentUpon>orderItems.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="account\passwordChange.aspx.cs">
+      <DependentUpon>passwordChange.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="account\passwordChange.aspx.designer.cs">
+      <DependentUpon>passwordChange.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="account\profile.aspx.cs">
+      <DependentUpon>profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="account\profile.aspx.designer.cs">
+      <DependentUpon>profile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="account\user-dashboard.aspx.cs">
+      <DependentUpon>user-dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="account\user-dashboard.aspx.designer.cs">
+      <DependentUpon>user-dashboard.aspx</DependentUpon>
+    </Compile>
     <Compile Include="cart.aspx.cs">
       <DependentUpon>cart.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -494,12 +589,33 @@
     <Compile Include="cart.aspx.designer.cs">
       <DependentUpon>cart.aspx</DependentUpon>
     </Compile>
+    <Compile Include="cenovnikDostave.aspx.cs">
+      <DependentUpon>cenovnikDostave.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="cenovnikDostave.aspx.designer.cs">
+      <DependentUpon>cenovnikDostave.aspx</DependentUpon>
+    </Compile>
     <Compile Include="checkout.aspx.cs">
       <DependentUpon>checkout.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="checkout.aspx.designer.cs">
       <DependentUpon>checkout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="compare.aspx.cs">
+      <DependentUpon>compare.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="compare.aspx.designer.cs">
+      <DependentUpon>compare.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="customControls\account\accountNavigation.ascx.cs">
+      <DependentUpon>accountNavigation.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customControls\account\accountNavigation.ascx.designer.cs">
+      <DependentUpon>accountNavigation.ascx</DependentUpon>
     </Compile>
     <Compile Include="customControls\BannerControls\BlockBanner.ascx.cs">
       <DependentUpon>BlockBanner.ascx</DependentUpon>
@@ -670,6 +786,27 @@
     <Compile Include="customControls\Navigation\Desktop\HorizontalMenu.ascx.designer.cs">
       <DependentUpon>HorizontalMenu.ascx</DependentUpon>
     </Compile>
+    <Compile Include="customControls\Navigation\Desktop\HorizontalMenuSecondLevel.ascx.cs">
+      <DependentUpon>HorizontalMenuSecondLevel.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customControls\Navigation\Desktop\HorizontalMenuSecondLevel.ascx.designer.cs">
+      <DependentUpon>HorizontalMenuSecondLevel.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="customControls\Navigation\Desktop\HorizontalMenuThirdLevelItem.ascx.cs">
+      <DependentUpon>HorizontalMenuThirdLevelItem.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customControls\Navigation\Desktop\HorizontalMenuThirdLevelItem.ascx.designer.cs">
+      <DependentUpon>HorizontalMenuThirdLevelItem.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="customControls\Navigation\Desktop\HorizotnalMenuSecondLevelItem.ascx.cs">
+      <DependentUpon>HorizotnalMenuSecondLevelItem.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customControls\Navigation\Desktop\HorizotnalMenuSecondLevelItem.ascx.designer.cs">
+      <DependentUpon>HorizotnalMenuSecondLevelItem.ascx</DependentUpon>
+    </Compile>
     <Compile Include="customControls\Navigation\Desktop\NavigationItemColumn.ascx.cs">
       <DependentUpon>NavigationItemColumn.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -712,6 +849,13 @@
     <Compile Include="customControls\Navigation\Mobile\MobileNavigation.ascx.designer.cs">
       <DependentUpon>MobileNavigation.ascx</DependentUpon>
     </Compile>
+    <Compile Include="customControls\Navigation\Mobile\MobileNotification\MobileNotification.ascx.cs">
+      <DependentUpon>MobileNotification.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customControls\Navigation\Mobile\MobileNotification\MobileNotification.ascx.designer.cs">
+      <DependentUpon>MobileNotification.ascx</DependentUpon>
+    </Compile>
     <Compile Include="customControls\Navigation\Mobile\NavigationRootItem.ascx.cs">
       <DependentUpon>NavigationRootItem.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -747,6 +891,13 @@
     <Compile Include="customControls\PageHeaderControls\PageHeader.ascx.designer.cs">
       <DependentUpon>PageHeader.ascx</DependentUpon>
     </Compile>
+    <Compile Include="customControls\PageNotification\PageNotification.ascx.cs">
+      <DependentUpon>PageNotification.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customControls\PageNotification\PageNotification.ascx.designer.cs">
+      <DependentUpon>PageNotification.ascx</DependentUpon>
+    </Compile>
     <Compile Include="customControls\Pagination\Pagination.ascx.cs">
       <DependentUpon>Pagination.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -774,6 +925,13 @@
     </Compile>
     <Compile Include="customControls\ProductControls\ProductCard\ProductCardActions.ascx.designer.cs">
       <DependentUpon>ProductCardActions.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="customControls\ProductControls\ProductCard\ProductCardControlFPView.ascx.cs">
+      <DependentUpon>ProductCardControlFPView.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customControls\ProductControls\ProductCard\ProductCardControlFPView.ascx.designer.cs">
+      <DependentUpon>ProductCardControlFPView.ascx</DependentUpon>
     </Compile>
     <Compile Include="customControls\ProductControls\ProductCard\ProductCardControl.ascx.cs">
       <DependentUpon>ProductCardControl.ascx</DependentUpon>
@@ -809,6 +967,13 @@
     </Compile>
     <Compile Include="customControls\ProductControls\ProductWidget.ascx.designer.cs">
       <DependentUpon>ProductWidget.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="customControls\QuickView\QuickViewModal.ascx.cs">
+      <DependentUpon>QuickViewModal.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="customControls\QuickView\QuickViewModal.ascx.designer.cs">
+      <DependentUpon>QuickViewModal.ascx</DependentUpon>
     </Compile>
     <Compile Include="customControls\Raw\HeaderRaw.ascx.cs">
       <DependentUpon>HeaderRaw.ascx</DependentUpon>
@@ -862,6 +1027,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\CacheHelper.cs" />
     <Compile Include="kontakt.aspx.cs">
       <DependentUpon>kontakt.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -869,12 +1035,68 @@
     <Compile Include="kontakt.aspx.designer.cs">
       <DependentUpon>kontakt.aspx</DependentUpon>
     </Compile>
+    <Compile Include="login.aspx.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="login.aspx.designer.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="not-found.aspx.cs">
+      <DependentUpon>not-found.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="not-found.aspx.designer.cs">
+      <DependentUpon>not-found.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="notificationTest.aspx.cs">
+      <DependentUpon>notificationTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="notificationTest.aspx.designer.cs">
+      <DependentUpon>notificationTest.aspx</DependentUpon>
+    </Compile>
     <Compile Include="orderSuccessful.aspx.cs">
       <DependentUpon>orderSuccessful.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="orderSuccessful.aspx.designer.cs">
       <DependentUpon>orderSuccessful.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="passwordChanged.aspx.cs">
+      <DependentUpon>passwordChanged.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="passwordChanged.aspx.designer.cs">
+      <DependentUpon>passwordChanged.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="passwordReset.aspx.cs">
+      <DependentUpon>passwordReset.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="passwordReset.aspx.designer.cs">
+      <DependentUpon>passwordReset.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="passwordResetMailSent.aspx.cs">
+      <DependentUpon>passwordResetMailSent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="passwordResetMailSent.aspx.designer.cs">
+      <DependentUpon>passwordResetMailSent.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="passwordResetRequest.aspx.cs">
+      <DependentUpon>passwordResetRequest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="passwordResetRequest.aspx.designer.cs">
+      <DependentUpon>passwordResetRequest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="paymentResponse.aspx.cs">
+      <DependentUpon>paymentResponse.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="paymentResponse.aspx.designer.cs">
+      <DependentUpon>paymentResponse.aspx</DependentUpon>
     </Compile>
     <Compile Include="product.aspx.cs">
       <DependentUpon>product.aspx</DependentUpon>
@@ -891,6 +1113,24 @@
       <DependentUpon>products.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="quickviewProduct.aspx.cs">
+      <DependentUpon>quickviewProduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="quickviewProduct.aspx.designer.cs">
+      <DependentUpon>quickviewProduct.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Redirect.cs" />
+    <Compile Include="search.aspx.cs">
+      <DependentUpon>search.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="search.aspx.designer.cs">
+      <DependentUpon>search.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SitemapHandler.ashx.cs">
+      <DependentUpon>SitemapHandler.ashx</DependentUpon>
+    </Compile>
     <Compile Include="VivoShop.Master.cs">
       <DependentUpon>VivoShop.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1235,6 +1475,13 @@
     <Compile Include="webShopAdmin\WebMethods.aspx.designer.cs">
       <DependentUpon>WebMethods.aspx</DependentUpon>
     </Compile>
+    <Compile Include="wishList.aspx.cs">
+      <DependentUpon>wishList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="wishList.aspx.designer.cs">
+      <DependentUpon>wishList.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="bundleconfig.json" />
@@ -1244,6 +1491,7 @@
     </None>
     <Content Include="fonts\stroyka\stroyka.ttf" />
     <Content Include="fonts\stroyka\stroyka.woff" />
+    <Content Include="connectionStrings.config" />
     <None Include="packages.config" />
     <Content Include="VivoShop.Master" />
     <Content Include="scss\blocks\_block-banner.scss" />
@@ -1415,6 +1663,12 @@
     <Content Include="vendor\jquery\jquery.slim.min.map" />
     <Content Include="vendor\owl-carousel\LICENSE" />
     <Content Include="vendor\owl-carousel\README.md" />
+    <Content Include="rules.prod.config" />
+    <Content Include="rules.config" />
+    <Content Include="scss\components\_mobile-notification.scss" />
+    <Content Include="SitemapHandler.ashx" />
+    <Content Include="sitemap.config" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1455,6 +1709,7 @@
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

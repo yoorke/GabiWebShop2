@@ -10,9 +10,9 @@ namespace VivoShop.customControls.Navigation
 {
     public partial class NavigationThirdLevelItem : System.Web.UI.UserControl
     {
-        private Category _category;
+        private CategoryView _category;
 
-        public Category Category
+        public CategoryView Category
         {
             get { return _category; }
             set

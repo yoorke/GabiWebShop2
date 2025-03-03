@@ -13,7 +13,22 @@ function createQueryString() {
     var queryString = '';
     var exists = false;
 
-    if ($('[id*=cmbPageSize]').val() !== '16') {
+    $.each($('[id*=chkFilterBrands]:checked'), function (key, value) {
+        queryString += $(this).parent().attr('attributeValue') + ',';
+    });
+    if (queryString.length > 0) {
+        queryString = 'brands=' + queryString;
+        queryString = queryString.substring(0, queryString.length - 1);
+        exists = true;
+    }
+
+    $.each($('[id*=chkAttributeValueID]:checked'), function (key, value) {
+        queryString += (exists ? '&' : '') + 'attributes=' + $(this).parent().attr('attributevalue') + ',';
+        queryString = queryString.substring(0, queryString.length - 1);
+        exists = true;
+    });
+
+    if ($('[id*=cmbPageSize]').val() !== '15') {
         queryString += (exists ? '&' : '') + 'pageSize=' + $('[id*=cmbPageSize]').val();
         exists = true;
     }

@@ -9,6 +9,7 @@
     margin-top: 16px;
     background: $footer-bg;
     border-top: $footer-border-top;
+    color: #ccc;
 }
 .site-footer__widgets {
     padding: 48px 0 54px;
@@ -28,8 +29,11 @@
     }
 }
 .site-footer__payments {
+    text-align: center;
+    border-top:1px solid #777;
     img {
         max-width: 100%;
+        margin: 5px;
     }
 }
 .site-footer__widget {

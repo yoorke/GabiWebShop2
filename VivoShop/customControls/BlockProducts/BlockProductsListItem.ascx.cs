@@ -10,9 +10,9 @@ namespace VivoShop.customControls.BlockProducts
 {
     public partial class BlockProductsListItem : System.Web.UI.UserControl
     {
-        private Product _product;
+        private ProductFPView _product;
 
-        public Product Product
+        public ProductFPView Product
         {
             get { return _product; }
             set

@@ -28,20 +28,33 @@ function ShowWishListFpContainer(x, y, count) {
     $('#wishListFpContainer').show();
 }
 
-function AddToCart(lblProductID, event) {
+function AddToCart(lblProductID, productName, event) {
     //var productID = parseInt($('#' + lblProductID).val());
     var productID = parseInt(lblProductID);
+    var quantity = 1;
+
+    if ($('#product-quantity')[0] !== undefined) {
+        quantity = parseInt($('#product-quantity')[0].value);
+    }
     
     $.ajax({
         type: 'POST',
         url: '/WebMethods.aspx/AddToCart',
-        data: JSON.stringify({ 'productID': productID }),
+        data: JSON.stringify({ 'productID': productID, 'quantity': quantity }),
         contentType: 'application/json;charset=utf-8',
         dataType: 'json',
         success: function (response) {
             //ShowCartFpContainer('productFp', event);
             GetCartProductsCount();
-            alert("Proizvod dodat u korpu.");
+            //alert("Proizvod dodat u korpu.");
+            $('#cart__indicator').addClass('indicator--display').addClass('indicator--open');
+            $('.nav-panel--sticky').addClass('nav-panel--show');
+            GetCartItems();
+            if (screen.width < 922) {
+                //$('[id*=mobileCartNotification]').show;
+                $('#mobileCartNotification .notification__body__content')[0].innerText = productName;
+                $('#mobileCartNotification').eq(0).css('display', 'flex');
+            }
         },
         error: function (jqXHR, textStatus, errorThrown) {
             //alert(jqXHR.responseText);
@@ -84,7 +97,8 @@ function GetCartItems() {
 }
 
 function AddToCompare(event, lblProductID) {
-    var productID = parseInt($('#' + lblProductID).val());
+    //var productID = parseInt($('#' + lblProductID).val());
+    var productID = parseInt(lblProductID);
 
     $.ajax({
         type: 'POST',
@@ -93,8 +107,10 @@ function AddToCompare(event, lblProductID) {
         contentType: 'application/json;charset=utf-8',
         dataType: 'json',
         success: function (msg) {
-            ShowCompareFpContainer(event.pageX, event.pageY, msg.d);
+            //ShowCompareFpContainer(event.pageX, event.pageY, msg.d);
             //$('[id*=lblCompareCount]')[0].innerText = msg.d;
+            GetCompareProductCount();
+            alert("Proizvod dodat na poređenje");
         },
         error: function (jqXHR, textStatus, errorThrown) {
             //alert(jqXHR.responseText);
@@ -105,7 +121,8 @@ function AddToCompare(event, lblProductID) {
 }
 
 function AddToWishList(event, lblProductID) {
-    var productID = parseInt($('#' + lblProductID).val());
+    //var productID = parseInt($('#' + lblProductID).val());
+    var productID = parseInt(lblProductID);
 
     $.ajax({
         type: 'POST',
@@ -118,8 +135,10 @@ function AddToWishList(event, lblProductID) {
                 window.location = '/prijava?returnUrl=' + window.location.pathname;
             else {
                 //alert('wishlist');
-                ShowWishListFpContainer(event.pageX, event.pageY, msg.d);
-                $('#ctl00_lblWishListCount')[0].innerText = msg.d;
+                //ShowWishListFpContainer(event.pageX, event.pageY, msg.d);
+                //$('#ctl00_lblWishListCount')[0].innerText = msg.d;
+                $('#wl_pc')[0].innerText = msg.d;
+                alert("Proizvod dodat u listu želja");
             }
         },
         error: function (jqXHR, textStatus, errorThrown) {
@@ -182,6 +201,8 @@ $(document).ready(function () {
     });
 
     GetCartProductsCount();
+    GetWishListProductCount();
+    GetCompareProductCount();
 });
 
 //function ChangeImage(imageUrl) {
@@ -297,6 +318,33 @@ function GetCartProductsCount() {
     });
 }
 
+function GetWishListProductCount() {
+    $.ajax({
+        type: 'POST',
+        url: '/WebMethods.aspx/GetWishListCount',
+        data: '',
+        contentType: 'application/json;charset=utf-8',
+        dataType: 'json',
+        success: function (msg) {
+            $('#wl_pc')[0].innerText = msg.d;
+        }
+    });
+}
+
+function GetCompareProductCount() {
+    $.ajax({
+        type: 'POST',
+        url: '/WebMethods.aspx/GetCompareProductCount',
+        data: '',
+        contentType: 'application/json;charset=utf-8',
+        dataType: 'json',
+        success: function (msg) {
+            $('#compare_pc')[0].innerText = msg.d;
+            //$('#compare_pc1')[0].innerText = msg.d;
+        }
+    });
+}
+
 function formatCurrency(value) {
     return value.toLocaleString('sr', { minimumFractionDigits: 2 });
 }
@@ -305,7 +353,8 @@ function btnProductCompareRemove_Click(lblProductID) {
     $.ajax({
         type: 'POST',
         url: '/WebMethods.aspx/DeleteFromProductCompare',
-        data: JSON.stringify({ "productID": $('#' + lblProductID).val() }),
+        //data: JSON.stringify({ "productID": $('#' + lblProductID).val() }),
+        data: JSON.stringify({ "productID": lblProductID }),
         contentType: 'application/json;chartset=utf-8',
         dataType: 'json',
         success: function (msg) {

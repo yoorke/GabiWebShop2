@@ -1,6 +1,7 @@
 ﻿using eshopBL;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Security;
@@ -34,7 +35,43 @@ namespace VivoShop
 
         protected void Application_BeginRequest(object sender, EventArgs e)
         {
+            //if(((bool.Parse(ConfigurationManager.AppSettings["useSSL"]) && !HttpContext.Current.Request.IsSecureConnection)
+            //|| !HttpContext.Current.Request.Url.ToString().ToLower().StartsWith(ConfigurationManager.AppSettings["webShopUrl"]))
+            //&& !HttpContext.Current.Request.IsLocal)
+            //{
+            //Response.RedirectPermanent(ConfigurationManager.AppSettings["webShopUrl"] + HttpContext.Current.Request.RawUrl);
+            //}
+            //if(!Request.Url.PathAndQuery.Equals("/"))
+            //Response.Redirect("/");
 
+            //if(bool.Parse(ConfigurationManager.AppSettings["redirectCategoryByUrl"]) //&& //!Request.IsLocal
+            //)
+            //{
+            //if (Application["redirectUrls"] == null)
+            //Application.Add("redirectUrls", new Redirect().LoadUrls());
+
+            //string url = Request.RawUrl;
+            //if (Request.QueryString.ToString() != string.Empty)
+            //url = url.Substring(0, url.IndexOf("?"));
+            //if (((Dictionary<string, string>)Application["redirectUrls"]).ContainsKey(url))
+            //Response.RedirectPermanent(((Dictionary<string, string>)Application["redirectUrls"])[url] + (Request.RawUrl.Contains("?") ? "?" + Request.QueryString.ToString() : string.Empty));
+            //}
+
+            if(bool.Parse(ConfigurationManager.AppSettings["redirectByRedirectFile"]) && !Request.IsLocal)
+            {
+                if (Application["redirectUrls"] == null)
+                    Application.Add("redirectUrls", new Redirect().LoadUrls());
+
+                string url = Request.Url.AbsolutePath;
+                if (((Dictionary<string, string>)Application["redirectUrls"]).ContainsKey(url))
+                    Response.RedirectPermanent(((Dictionary<string, string>)Application["redirectUrls"])[url] + Request.Url.Query);
+            }
+
+            if (Request.RawUrl.EndsWith("cart.html"))
+                Response.RedirectPermanent(ConfigurationManager.AppSettings["webShopUrl"] + "/korpa");
+
+            //if (!Request.RawUrl.ToLower().Contains("webshopadmin") && !Request.RawUrl.ToLower().Contains("index-maintenance"))
+                //Response.Redirect("/index-maintenance.html");
         }
 
         protected void Application_AuthenticateRequest(object sender, EventArgs e)
@@ -49,7 +86,7 @@ namespace VivoShop
                 return;
 
             eshopUtilities.ErrorLog.LogError(ex, Request.RawUrl, Request.UserHostAddress, Request.Url.ToString());
-            Server.Transfer("~/error.html");
+            Server.Transfer("~/error.aspx");
         }
 
         protected void Session_End(object sender, EventArgs e)

@@ -66,10 +66,13 @@
                                     </li>
                                 </ItemTemplate>
                                 <FooterTemplate>
+                                    <li class="footer-links__item">
+                                        <asp:HyperLink runat="server" CssClass="footer-links__link" NavigateUrl="/cenovnik-dostave" Text="Cenovnik dostave"></asp:HyperLink>
+                                    </li>
                                     </ul>
                                 </FooterTemplate>
                                 </asp:Repeater>
-                            <h5 class="footer-links__title mt-4">My Account</h5>
+                            <h5 class="footer-links__title mt-4">Moj nalog</h5>
                             <%--<asp:Repeater ID="rptAccountFooterLinks" runat="server">
                                 <HeaderTemplate>
                                     <ul class="footer-links__list">
@@ -108,33 +111,74 @@
                                 Pretplatite se na Gabi listu i saznajte prvi novosti vezane za proizvode i usluge.
                             </div>
                             <div action="" class="footer-newsletter__form">
-                                <label class="sr-only" for="footer-newsletter-address">Email Address</label>
-                                <input type="text" class="footer-newsletter__form-input form-control" id="footer-newsletter-address" placeholder="Email Address...">
-                                <button class="footer-newsletter__form-button btn btn-primary">Subscribe</button>
+                                <label class="sr-only" for="footer-newsletter-address">Email adresa</label>
+                                <input type="text" class="footer-newsletter__form-input form-control" id="footer-newsletter-address" placeholder="Email adresa...">
+                                <button class="footer-newsletter__form-button btn btn-secondary">Prijava</button>
                             </div>
                             <div class="footer-newsletter__text footer-newsletter__text--social">
-                                Follow us on social networks
+                                <%--Follow us on social networks--%>
+                                Pratite nas na društvenim mrežama
                             </div>
                             <ul class="footer-newsletter__social-links">
-                                <li class="footer-newsletter__social-link footer-newsletter__social-link--facebook"><a href="https://themeforest.net/user/kos9" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-                                <li class="footer-newsletter__social-link footer-newsletter__social-link--twitter"><a href="https://themeforest.net/user/kos9" target="_blank"><i class="fab fa-twitter"></i></a></li>
-                                <li class="footer-newsletter__social-link footer-newsletter__social-link--youtube"><a href="https://themeforest.net/user/kos9" target="_blank"><i class="fab fa-youtube"></i></a></li>
-                                <li class="footer-newsletter__social-link footer-newsletter__social-link--instagram"><a href="https://themeforest.net/user/kos9" target="_blank"><i class="fab fa-instagram"></i></a></li>
-                                <li class="footer-newsletter__social-link footer-newsletter__social-link--rss"><a href="https://themeforest.net/user/kos9" target="_blank"><i class="fas fa-rss"></i></a></li>
+                                <li class="footer-newsletter__social-link footer-newsletter__social-link--facebook">
+                                    <%--<a href="https://themeforest.net/user/kos9" target="_blank">--%>
+                                    <a href="https://www.facebook.com/gabidoozr" target="_blank">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+                                </li>
+                                <%--<li class="footer-newsletter__social-link footer-newsletter__social-link--twitter">
+                                    <a href="https://themeforest.net/user/kos9" target="_blank">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                </li>--%>
+                                <%--<li class="footer-newsletter__social-link footer-newsletter__social-link--youtube">
+                                    <a href="https://themeforest.net/user/kos9" target="_blank">
+                                        <i class="fab fa-youtube"></i>
+                                    </a>
+                                </li>--%>
+                                <li class="footer-newsletter__social-link footer-newsletter__social-link--instagram">
+                                    <%--<a href="https://themeforest.net/user/kos9" target="_blank">--%>
+                                    <a href="https://instagram.com/gabidoo023" target="_blank">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                </li>
+                                <%--<li class="footer-newsletter__social-link footer-newsletter__social-link--rss">
+                                    <a href="https://themeforest.net/user/kos9" target="_blank">
+                                        <i class="fas fa-rss"></i>
+                                    </a>
+                                </li>--%>
                             </ul>
+                            <div class="mt-4">
+                                <a href="https://www.bosch-professional.com/rs/sr" target="_blank"><img src="/images/BOSCH-logo.png" alt="Bosch alati" /></a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-
+            <div class="site-footer__payments">
+                <%--<img src="/images/payments.png" alt="">--%>
+                <img src="/images/payment/visa.png" />
+                <img src="/images/payment/master.png" />
+                <img src="/images/payment/maestro.png" />
+                <img src="/images/payment/dina.png" />
+                <a href="https://www.bancaintesa.rs" target="_blank">
+                    <img src="/images/payment/intesa.png" />
+                </a>
+                <a href="https://rs.visa.com/pay-with-visa/security-and-assistance/protected-everywhere.html" target="_blank">
+                    <img src="/images/payment/visa-secure.jpg" />
+                </a>
+                <a href="http://www.mastercard.com/rs/consumer/credit-cards.html" target="_blank">
+                    <img src="/images/payment/master-secure.png" />
+                </a>
+            </div>
             <div class="site-footer__bottom">
                 <div class="site-footer__copyright">
                     <%--Powered by HTML — Design by <a href="https://themeforest.net/user/kos9" target="_blank">Kos</a>--%>
-                    Developed by VivoSoft
+                    Developed by <strong>VivoSoft</strong>
                 </div>
-                <div class="site-footer__payments">
+                <%--<div class="site-footer__payments">
                     <img src="/images/payments.png" alt="">
-                </div>
+                </div>--%>
             </div>
         </div>
 

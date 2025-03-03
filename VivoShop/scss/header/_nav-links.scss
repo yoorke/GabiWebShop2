@@ -27,11 +27,14 @@ $item-padding: 14px;
     display: flex;
     align-items: center;
     height: 100%;
-    font-size: 15px;
+    font-size: 13px;
     line-height: 1;
     letter-spacing: .02em;
-    font-weight: $nav-links-item-font-weight;
+    //font-weight: $nav-links-item-font-weight;
+    font-weight: 400;
     color: $nav-links-item-default-font-color;
+    text-transform: uppercase;
+    text-align: center;
 
     &:hover {
         color: $nav-links-item-hover-font-color;
@@ -121,7 +124,8 @@ $item-padding: 14px;
     width: 4 / 12 * 100%;
 }
 .nav-links__submenu--size--nl {
-    width: 50%;
+    //width: 50%;
+    width: 100%;
 }
 .nav-links__submenu--size--md {
     width: 8 / 12 * 100%;

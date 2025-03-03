@@ -2,6 +2,8 @@
 <%@ Register Src="~/customControls/Header/MobileHeader.ascx" TagName="MobileHeader" TagPrefix="Vivo" %>
 <%@ Register Src="~/customControls/Navigation/Mobile/MobileNavigation.ascx" TagName="MobileNavigation" TagPrefix="Vivo" %>
 <%@ Register Src="~/customControls/Footer/FooterControl.ascx" TagName="Footer" TagPrefix="Vivo" %>
+<%@ Register Src="~/customControls/QuickView/QuickViewModal.ascx" TagName="QuickViewModal" TagPrefix="Vivo" %>
+<%@ Register Src="~/customControls/Navigation/Mobile/MobileNotification/MobileNotification.ascx" TagName="MobileNotification" TagPrefix="Vivo" %>
 
 <!DOCTYPE html>
 
@@ -12,13 +14,41 @@
     <meta name="format-detection" content="telephone=no">
     <title>Gabi farbara - boje i lakovi</title>
 
-    <link rel="icon" type="image/png" href="<%#ResolveUrl("/images/favicon.png")%>">
+    <%--<link rel="icon" type="image/png" href="<%#ResolveUrl("/images/favicon.png")%>">--%>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#eee">
+    <meta name="theme-color" content="#ffffff">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i">
-    <link rel="stylesheet" href="<%#ResolveUrl("~/css/bundle.min.css") %>" />
-    <link rel="stylesheet" href="<%#ResolveUrl("~/css/style.min.css") %>" />
-    <link rel="stylesheet" href="<%#ResolveUrl("~/vendor/photoswipe/photoswipe.css") %>" />
-    <link rel="stylesheet" href="<%#ResolveUrl("~/vendor/photoswipe/default-skin/default-skin.css") %>" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/fontawesome.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/owl.carousel@2.3.4/dist/assets/owl.carousel.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" />
+    <link rel="stylesheet" href="<%#ResolveUrl("~/css/bundle.min.css?1.11") %>" />
+    <link rel="stylesheet" href="<%#ResolveUrl("~/css/style.min.css?1.11") %>" />
+    <%--<link rel="stylesheet" href="<%#ResolveUrl("~/css/style.purified.min.css") %>" />--%>
+    <%--<link rel="stylesheet" href="<%#ResolveUrl("~/vendor/photoswipe/photoswipe.css") %>" />--%>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css" />
+    <%--<link rel="stylesheet" href="<%#ResolveUrl("~/vendor/photoswipe/default-skin/default-skin.css") %>" />--%>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+
+        <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-96929121-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
     
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -33,24 +63,34 @@
             <Vivo:Footer runat="server" /> 
         </div>
     </form>
-
+    <Vivo:QuickViewModal runat="server"></Vivo:QuickViewModal>
     <Vivo:MobileNavigation runat="server"></Vivo:MobileNavigation>
 
-    <script src="<%=ResolveUrl("~/js/bundle.min.js") %>" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <%--<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.bundle.min.js" type="text/javascript"></script>--%>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/owl.carousel@2.3.4/dist/owl.carousel.min.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/nouislider@14.1.0/distribute/nouislider.min.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/svg4everybody@2.1.9/dist/svg4everybody.min.js" type="text/javascript"></script>
+    <%--<script src="https://cdn.jsdelivr.net/npm/jquery.tmpl@0.0.1/index.min.js" type="text/javascript"></script>--%>
+    <script src="<%=ResolveUrl("~/js/bundle.min.js?1.13") %>" type="text/javascript"></script>
     <%--<script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="vendor/owl-carousel/owl.carousel.min.js"></script>
     <script src="vendor/nouislider/nouislider.min.js"></script>--%>
-    <script src="/vendor/photoswipe/photoswipe.min.js"></script>
-    <script src="/vendor/photoswipe/photoswipe-ui-default.min.js"></script>
-    <script src="/js.src/main.js"></script>
+    <%--<script src="/vendor/photoswipe/photoswipe.min.js"></script>--%>
+    <%--<script src="/vendor/photoswipe/photoswipe-ui-default.min.js"></script>--%>
+    <%--<script src="/js.src/main.js?1.11"></script>--%>
     <%--<script src="vendor/select2/js/select2.min.js"></script>
     <script src="js/number.js"></script>
     
     
     <script src="vendor/svg4everybody/svg4everybody.min.js"></script>--%>
-    <script src="/js.src/web-shop.js"></script>
-    <script src="/js.src/header.js"></script>
+    <script src="/js.src/web-shop.js?1.11"></script>
+    <%--<script src="/js.src/header.js"></script>--%>
     <script>
         svg4everybody();
     </script>
@@ -58,5 +98,15 @@
     <asp:ContentPlaceHolder ID="FooterContentPlaceholder" runat="server">
 
     </asp:ContentPlaceHolder>
+
+    <Vivo:MobileNotification ID="mobileCartNotification"
+                             runat="server"
+                             Heading="Proizvod dodat u korpu"
+                             ButtonLeftText="Korpa"
+                             ButtonLeftLink="/korpa"
+                             ButtonLeftClass="btn btn-primary"
+                             Button3Text="Poruči odmah"
+                             Button3Link="/porucivanje"
+                             Button3CssClass="btn btn-primary"/>
 </body>
 </html>

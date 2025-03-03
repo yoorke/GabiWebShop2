@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -52,6 +53,19 @@ namespace VivoShop.customControls.ProductControls
             divProductCard.Attributes["class"] = "product-card " + _alternateCss;
 
             productActions.Product = _product;
+
+            lblProductID.Value = _product.ProductID.ToString();
+
+            if(HttpContext.Current.User.Identity.IsAuthenticated && Roles.IsUserInRole(HttpContext.Current.User.Identity.Name, "Administrator"))
+            {
+                lnkEditProduct.Visible = true;
+                lnkEditProduct.NavigateUrl = "/" + ConfigurationManager.AppSettings["webShopAdminUrl"] + "/product.aspx?id=" + _product.ProductID;
+            }
+
+            spanDelivery.Attributes["class"] += _product.CanBeDelivered ? " allowed" : " not-allowed";
+            spanDelivery.Attributes["title"] = _product.CanBeDelivered ? "Artikal se šalje kurirskom službom" : "Artikal se ne šalje kurirskom službom";
+            spanInStore.Attributes["class"] += " allowed";
+            spanInCity.Attributes["class"] += " allowed";
         }
     }
 }

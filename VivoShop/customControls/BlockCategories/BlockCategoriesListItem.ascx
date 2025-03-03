@@ -2,17 +2,17 @@
 <div class="block-categories__item category-card category-card--layout--classic">
     <div class="category-card__body">
         <div class="category-card__image">
-            <a href="">
+            <asp:Hyperlink ID="lnkImage" runat="server">
                 <%--<img src="/images/categories/category-1.jpg" alt="">--%>
                 <asp:Image ID="imgCategoryImage" runat="server" />
-            </a>
+            </asp:Hyperlink>
         </div>
         <div class="category-card__content">
             <div class="category-card__name">
-                <a href="">
+                <asp:Hyperlink ID="lnkCategory" runat="server">
                     <%--Farbanje--%>
                     <asp:Literal ID="lblCategoryName" runat="server"></asp:Literal>
-                </a>
+                </asp:Hyperlink>
             </div>
             <asp:Repeater ID="rptSubCategories" runat="server">
                 <HeaderTemplate>
@@ -28,7 +28,7 @@
                 </FooterTemplate>
             </asp:Repeater>
             <div class="category-card__all">
-                <a href="">Prikaži sve</a>
+                <asp:Hyperlink ID="lnkShowAll" runat="server">Prikaži sve</asp:Hyperlink>
             </div>
             <div class="category-card__products">
                 <asp:Literal ID="lblProductsCount" runat="server"></asp:Literal>

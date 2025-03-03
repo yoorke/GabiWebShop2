@@ -129,7 +129,7 @@
    //links
    $link-color:                     #1a66ff               !default;
    $link-hover-color:               #1a66ff               !default;
-
+   $validator-error-color:          #d9544f               !default;
 
 // ----------------------------------------
 // -- helpers
@@ -188,7 +188,8 @@
       $topbar-bg:            #f7f7f7 !default;
       $topbar-shadow:        none    !default;
       $topbar-border-bottom: none    !default;
-      $topbar-font-color:    #737373 !default;
+      //$topbar-font-color:    #737373 !default;
+      $topbar-font-color:    #444    !default;
 
    // ----------------------------------------
    // -- .topbar-link
@@ -422,8 +423,11 @@
 // ----------------------------------------
 // -- footer
 // ----------------------------------------
-   $footer-bg:                          transparent                    !default;
-   $footer-border-top:                  1px solid $light-divider-color !default;
+   //$footer-bg:                          transparent                    !default;
+   //$footer-bg:                          lighten($accent-color, 20%)                  !default;
+   $footer-bg:                          #444;
+   //$footer-border-top:                  1px solid $light-divider-color !default;
+   $footer-border-top:                  3px solid #ff0000              !default;
    $footer-copyright-border:            1px solid $light-divider-color !default;
    // social links
    $footer-social-link-icon-color:      #fff                           !default;
@@ -750,7 +754,8 @@
       $product-card-font-alt-color:          $light-opposite-alt-color                !default;
       $product-card-font-muted-color:        $light-opposite-muted-color              !default;
 
-      $product-card-default-shadow:          0 0 0 1px #ededed inset                  !default;
+      //$product-card-default-shadow:          0 0 0 1px #ededed inset                  !default;
+      $product-card-default-shadow:          0 0 0 1px #ffc4c4 inset                  !default;
       $product-card-hover-shadow:            0 0 0 2px rgba($accent-color, .7) inset  !default;
 
       $product-card-badge-sale-bg:           #ff3333                                  !default;

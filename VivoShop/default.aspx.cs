@@ -11,7 +11,11 @@ namespace VivoShop
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if(!Page.IsPostBack)
+            {
+                blockProductsCarousel1.LoadProducts();
+                blockProductsCarousel2.LoadProducts();
+            }
         }
     }
 }

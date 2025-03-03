@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="BlockedFeatures.ascx.cs" Inherits="VivoShop.customControls.BlockFeatures.BlockedFeatures" %>
-<div class="block block-features block-features--layout--classic">
-    <div class="container">
+<div class="block block-features block-features--layout--classic" style="margin-top:0;margin-bottom:0">
+    <div class="container-fluid">
         <div class="block-features__list">
             <div class="block-features__item">
                 <div class="block-features__icon">
@@ -10,7 +10,7 @@
                 </div>
                 <div class="block-features__content">
                     <div class="block-features__title">Besplatna dostava</div>
-                    <div class="block-features__subtitle">Za iznose preko 5.000,00</div>
+                    <div class="block-features__subtitle">Za iznose preko <asp:Label ID="lblFreeDeliveryTotalValue" runat="server">5.000,00</asp:Label></div>
                 </div>
             </div>
             <div class="block-features__divider"></div>

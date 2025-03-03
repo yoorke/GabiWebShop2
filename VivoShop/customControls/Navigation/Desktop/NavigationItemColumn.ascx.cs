@@ -10,9 +10,9 @@ namespace VivoShop.customControls.Navigation
 {
     public partial class NavigationItemColumn : System.Web.UI.UserControl
     {
-        private List<Category> _categories;
+        private List<CategoryView> _categories;
 
-        public List<Category> Categories
+        public List<CategoryView> Categories
         {
             get { return _categories; }
             set

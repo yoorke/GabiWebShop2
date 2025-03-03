@@ -28,12 +28,12 @@
             <%--<asp:Literal ID="txtTextWhite" runat="server"></asp:Literal>--%>
         <%--</div>--%>
 
-        <div class="block-slideshow__slide-button">
-            <span class="btn btn-primary btn-lg">
+        <%--<div class="block-slideshow__slide-button">
+            <span class="btn btn-primary btn-lg">--%>
                 <%--Poruči odmah--%>
                 <asp:Literal ID="txtButtonText" runat="server"></asp:Literal>
-            </span>
-        </div>
+            <%--</span>
+        </div>--%>
     </div>
 </asp:HyperLink>
 <%--</a>--%>

@@ -7,20 +7,40 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace VivoShop.customControls.ProductControls.ProductCard {
-    
-    
-    public partial class ProductCardActions {
-        
+namespace VivoShop.customControls.ProductControls.ProductCard
+{
+
+
+    public partial class ProductCardActions
+    {
+
         /// <summary>
-        /// lnkAvailability control.
+        /// lblAvailability control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal lnkAvailability;
-        
+        protected global::System.Web.UI.WebControls.Label lblAvailability;
+
+        /// <summary>
+        /// priceDiv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl priceDiv;
+
+        /// <summary>
+        /// regularPriceDiv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl regularPriceDiv;
+
         /// <summary>
         /// lblProductPrice control.
         /// </summary>
@@ -29,7 +49,34 @@ namespace VivoShop.customControls.ProductControls.ProductCard {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal lblProductPrice;
-        
+
+        /// <summary>
+        /// promotionPriceDiv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl promotionPriceDiv;
+
+        /// <summary>
+        /// lblPromotionPrice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal lblPromotionPrice;
+
+        /// <summary>
+        /// lblOldPrice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal lblOldPrice;
+
         /// <summary>
         /// btnCart control.
         /// </summary>
@@ -38,7 +85,7 @@ namespace VivoShop.customControls.ProductControls.ProductCard {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlButton btnCart;
-        
+
         /// <summary>
         /// btnCart2 control.
         /// </summary>
@@ -47,5 +94,23 @@ namespace VivoShop.customControls.ProductControls.ProductCard {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlButton btnCart2;
+
+        /// <summary>
+        /// btnWishList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnWishList;
+
+        /// <summary>
+        /// btnCompare control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnCompare;
     }
 }

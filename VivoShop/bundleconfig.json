@@ -2,13 +2,13 @@
   {
     "outputFileName": "css/bundle.css",
     "inputFiles": [
-      "vendor/bootstrap/css/bootstrap.css",
-      "vendor/fontawesome/css/fontawesome.css",
-      "vendor/owl-carousel/assets/owl.carousel.css",
+      //"vendor/bootstrap/css/bootstrap.css",
+      //"vendor/fontawesome/css/fontawesome.css",
+      //"vendor/owl-carousel/assets/owl.carousel.css",
       //"vendor/photoswipe/photoswipe.css",
       //"vendor/photoswipe/default-skin/default-skin.css",
-      "vendor/select2/css/select2.min.css",
-      "vendor/fontawesome/css/all.min.css",
+      //"vendor/select2/css/select2.min.css",
+      //"vendor/fontawesome/css/all.min.css",
       "fonts/stroyka/stroyka.css"
       //"css/style.css"
     ]
@@ -16,18 +16,18 @@
   {
     "outputFileName": "js/bundle.js",
     "inputFiles": [
-      "vendor/jquery/jquery.min.js",
-      "vendor/bootstrap/js/bootstrap.bundle.min.js",
-      "vendor/owl-carousel/owl.carousel.min.js",
-      "vendor/nouislider/nouislider.min.js",
+      //"vendor/jquery/jquery.min.js",
+      //"vendor/bootstrap/js/bootstrap.bundle.min.js",
+      //"vendor/owl-carousel/owl.carousel.min.js",
+      //"vendor/nouislider/nouislider.min.js",
       //"vendor/photoswipe/photoswipe.min.js",
       //"vendor/photoswipe/photoswipe-ui-default.min.js",
-      "vendor/select2/js/select2.min.js",
+      //"vendor/select2/js/select2.min.js",
       "js.src/number.js",
-      //"js.src/main.js",
-      //"js.src/header.js",
-      "vendor/svg4everybody/svg4everybody.min.js",
-      //"js.src/web-shop.js",
+      "js.src/main.js",
+      "js.src/header.js",
+      //"vendor/svg4everybody/svg4everybody.min.js",
+      "js.src/web-shop.js",
       "vendor/jquery/jquery.tmpl.min.js"
     ]
   }

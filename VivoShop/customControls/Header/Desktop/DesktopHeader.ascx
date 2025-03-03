@@ -8,7 +8,7 @@
 
         <Vivo:TopBar runat="server"></Vivo:TopBar>
         <Vivo:HeaderMiddleContainer runat="server"></Vivo:HeaderMiddleContainer>
-        <Vivo:DesktopNavigation ID="desktopNavigation" runat="server"></Vivo:DesktopNavigation>
+        <Vivo:DesktopNavigation ID="desktopNavigation" runat="server" ShowVerticalMenu="false"></Vivo:DesktopNavigation>
 
     </div>
 </header>

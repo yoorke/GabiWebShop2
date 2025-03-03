@@ -15,6 +15,10 @@ namespace VivoShop.customControls.BlockProductsCarousel
         private BlockProductsCarouselType _type;
         private string _title;
         private int _categoryID = -1;
+        private string _orderBy = "Slučajni";
+        private ProductOrderByType _orderByType = ProductOrderByType.Random;
+        private int _numberOfProducts = 16;
+        private bool _cacheData = true;
 
         public BlockProductsCarouselType Type
         {
@@ -22,7 +26,7 @@ namespace VivoShop.customControls.BlockProductsCarousel
             set
             {
                 _type = value;
-                loadProducts();
+                //loadProducts();
                 //setValues();
             }
         }
@@ -33,13 +37,34 @@ namespace VivoShop.customControls.BlockProductsCarousel
             set
             {
                 _title = value;
-                setValues();
+                //setValues();
             }
         }
 
         public int CategoryID
         {
             set { _categoryID = value; }
+        }
+
+        public string OrderBy
+        {
+            set { _orderBy = value; }
+        }
+
+        public ProductOrderByType OrderByType
+        {
+            set { _orderByType = value; }
+        }
+
+        public int NumberOfProducts
+        {
+            set { _numberOfProducts = value; }
+        }
+
+        public bool CacheData
+        {
+            get { return _cacheData; }
+            set { _cacheData = value; }
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -50,8 +75,21 @@ namespace VivoShop.customControls.BlockProductsCarousel
 
         private void loadProducts()
         {
-            List<Product> products = new ProductBL().GetProductsForFirstPage(_categoryID, -1, 16, "product.name");
-            List<List<Product>> carouselProducts = new List<List<Product>>();
+            List<ProductFPView> products = new List<ProductFPView>();
+
+            if(Cache[ID] == null || !_cacheData)
+            { 
+                //List<Product> products = new ProductBL().GetProductsForFirstPage(_categoryID, -1, 16, "Slučajni");
+                products = new ProductViewBL().GetProductsForFirstPage(_categoryID, -1, _numberOfProducts, _orderByType);
+                if(_cacheData && products != null)
+                    Cache.Add(ID, products, null, DateTime.Now.AddMinutes(60), System.Web.Caching.Cache.NoSlidingExpiration, System.Web.Caching.CacheItemPriority.Normal, null);
+            }
+            else
+            {
+                products = (List<ProductFPView>)Cache[ID];
+            }
+
+            List<List<ProductFPView>> carouselProducts = new List<List<ProductFPView>>();
             int index = (int)_type;
             int listIndex = 0;
 
@@ -60,7 +98,7 @@ namespace VivoShop.customControls.BlockProductsCarousel
                 for (int i = 0; i < products.Count; i++)
                 {
                     if (carouselProducts.Count <= listIndex)
-                        carouselProducts.Add(new List<Product>());
+                        carouselProducts.Add(new List<ProductFPView>());
                     //carouselProducts[listIndex] = new List<Product>();
 
                     carouselProducts[listIndex].Add(products[i]);
@@ -95,6 +133,12 @@ namespace VivoShop.customControls.BlockProductsCarousel
 
             }
             return value.ToString().ToLower();
+        }
+
+        public void LoadProducts()
+        {
+            setValues();
+            loadProducts();
         }
     }
 }

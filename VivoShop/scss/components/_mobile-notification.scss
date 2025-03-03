@@ -1,0 +1,56 @@
+﻿.notification {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid $accent_color;
+    display: none;
+    padding: 1em;
+
+    .notification__header {
+        font-size: 1.2em;
+        font-weight: bold;
+        margin-bottom: 1em;
+        text-align: center;
+        display: flex;
+
+        .notification__header__icon {
+            fill: green;
+            border: 1px solid green;
+            padding: 5px;
+            margin-right: 1em;
+            border-radius: 50%;
+        }
+    }
+
+    .notification__body {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+
+        a{
+            display:block;
+            margin-bottom: 1em;
+        }
+
+        .notification__body__content {
+            margin-bottom: 2em;
+            font-size: 1.2em;
+        }
+    }
+
+    .notification__close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        color: #444;
+        cursor: pointer;
+    }
+}

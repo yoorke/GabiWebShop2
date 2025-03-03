@@ -7,8 +7,8 @@
                     <ItemTemplate>
                         <div class="block-brands__item">
                             <asp:HyperLink runat="server" NavigateUrl='<%#Eval("Url") %>'>
-                                <asp:Literal runat="server" Text='<%#Eval("Name") %>'></asp:Literal>
-                                <asp:Image runat="server" ImageUrl='<%#Eval("LogoUrl") %>' />
+                                <asp:Literal runat="server" Text='<%#Eval("Name") %>' Visible='<%#Eval("LogoUrl") == null || Eval("LogoUrl").ToString() == string.Empty %>'></asp:Literal>
+                                <asp:Image runat="server" ImageUrl='<%# "/images/brand/" + Eval("LogoUrl") %>' Visible='<%#Eval("LogoUrl") != null && Eval("LogoUrl").ToString() != string.Empty %>' />
                             </asp:HyperLink>
                         </div>
                     </ItemTemplate>

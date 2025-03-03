@@ -1,4 +1,6 @@
-﻿using eshopBL;
+﻿using eshopBE;
+using eshopBL;
+using eshopUtilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +14,21 @@ namespace VivoShop.customControls.Navigation.Mobile
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            rptRootMenu.DataSource = new CategoryBL().GetNestedCategoriesList();
+            List<CategoryView> categories = new List<CategoryView>();
+
+            if(Cache["MainMenu"] == null)
+            {
+                ErrorLog.LogMessage("Mobile navigation create cache");
+                categories = new CategoryViewBL().GetNestedCategoriesList();
+                Cache.Add("MainMenu", categories, null, DateTime.Now.AddMinutes(60), System.Web.Caching.Cache.NoSlidingExpiration, System.Web.Caching.CacheItemPriority.Normal, null);
+            }
+            else
+            {
+                categories = (List<CategoryView>)Cache["MainMenu"];
+            }
+
+            //rptRootMenu.DataSource = new CategoryBL().GetNestedCategoriesList();
+            rptRootMenu.DataSource = categories;
             rptRootMenu.DataBind();
         }
     }

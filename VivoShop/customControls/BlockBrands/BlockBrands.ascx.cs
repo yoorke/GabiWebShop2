@@ -1,6 +1,9 @@
-﻿using eshopBL;
+﻿using eshopBE;
+using eshopBL;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -18,7 +21,27 @@ namespace VivoShop.customControls.BlockBrands
 
         private void loadBrands()
         {
-            rptBrands.DataSource = new BrandBL().GetBrands(false);
+            List<Brand> brands = new List<Brand>();
+
+            if(Cache["BlockBrands"] == null)
+            {
+                if (File.Exists(Server.MapPath("~/blockBrands.json")))
+                    brands = JsonConvert.DeserializeObject<List<Brand>>(File.OpenText(Server.MapPath("~/blockBrands.json")).ReadToEnd());
+                else
+                {
+                    brands = new BrandBL().GetBrands(false);
+                    using (TextWriter tw = new StreamWriter(Server.MapPath("~/blockBrands.json"), false))
+                        tw.Write(JsonConvert.SerializeObject(brands));
+                }
+                Cache.Add("BlockBrands", brands, null, DateTime.Now.AddMinutes(60), System.Web.Caching.Cache.NoSlidingExpiration, System.Web.Caching.CacheItemPriority.Normal, null);
+            }
+            else
+            {
+                brands = (List<Brand>)Cache["BlockBrands"];
+            }
+
+            //rptBrands.DataSource = new BrandBL().GetBrands(false);
+            rptBrands.DataSource = brands;
             rptBrands.DataBind();
         }
     }

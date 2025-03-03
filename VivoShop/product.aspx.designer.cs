@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace VivoShop {
-    
-    
-    public partial class product {
-        
+namespace VivoShop
+{
+
+
+    public partial class product
+    {
+
         /// <summary>
         /// pageHeader control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace VivoShop {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::VivoShop.customControls.PageHeaderControls.PageHeader pageHeader;
-        
+
         /// <summary>
         /// productGallery control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace VivoShop {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::VivoShop.customControls.ProductControls.ProductGallery.ProductGalleryControl productGallery;
-        
+
         /// <summary>
         /// lblProductName control.
         /// </summary>
@@ -38,7 +40,16 @@ namespace VivoShop {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal lblProductName;
-        
+
+        /// <summary>
+        /// imgBrandLogo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imgBrandLogo;
+
         /// <summary>
         /// lblProductDescription control.
         /// </summary>
@@ -47,7 +58,16 @@ namespace VivoShop {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal lblProductDescription;
-        
+
+        /// <summary>
+        /// lblAvailability control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAvailability;
+
         /// <summary>
         /// lblBrandName control.
         /// </summary>
@@ -56,7 +76,7 @@ namespace VivoShop {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal lblBrandName;
-        
+
         /// <summary>
         /// lblProductCode control.
         /// </summary>
@@ -65,7 +85,34 @@ namespace VivoShop {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal lblProductCode;
-        
+
+        /// <summary>
+        /// lblAvailability2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAvailability2;
+
+        /// <summary>
+        /// priceDiv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl priceDiv;
+
+        /// <summary>
+        /// regularPriceDiv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl regularPriceDiv;
+
         /// <summary>
         /// lblProductWebPrice control.
         /// </summary>
@@ -74,7 +121,34 @@ namespace VivoShop {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal lblProductWebPrice;
-        
+
+        /// <summary>
+        /// promotionPriceDiv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl promotionPriceDiv;
+
+        /// <summary>
+        /// lblPromotionPrice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal lblPromotionPrice;
+
+        /// <summary>
+        /// lblOldPrice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal lblOldPrice;
+
         /// <summary>
         /// btnCart control.
         /// </summary>
@@ -83,7 +157,34 @@ namespace VivoShop {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlButton btnCart;
-        
+
+        /// <summary>
+        /// spanDelivery control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl spanDelivery;
+
+        /// <summary>
+        /// spanInStore control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl spanInStore;
+
+        /// <summary>
+        /// spanInCity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl spanInCity;
+
         /// <summary>
         /// lblProductDescriptionBottom control.
         /// </summary>
@@ -92,7 +193,7 @@ namespace VivoShop {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal lblProductDescriptionBottom;
-        
+
         /// <summary>
         /// lblProductSpecification control.
         /// </summary>
@@ -101,7 +202,16 @@ namespace VivoShop {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal lblProductSpecification;
-        
+
+        /// <summary>
+        /// lblDeclaration control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal lblDeclaration;
+
         /// <summary>
         /// productCarousel control.
         /// </summary>

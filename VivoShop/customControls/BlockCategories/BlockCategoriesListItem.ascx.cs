@@ -10,9 +10,9 @@ namespace VivoShop.customControls.BlockCategories
 {
     public partial class BlockCategoriesListItem : System.Web.UI.UserControl
     {
-        private Category _category;
+        private CategoryView _category;
 
-        public Category Category
+        public CategoryView Category
         {
             get { return _category; }
             set
@@ -28,9 +28,13 @@ namespace VivoShop.customControls.BlockCategories
 
         private void setValues()
         {
-            imgCategoryImage.ImageUrl = _category.ImageUrl;
+            imgCategoryImage.ImageUrl = "/images/" + _category.ImageUrl;
+            imgCategoryImage.Visible = _category.ImageUrl != "no-image.jpg";
             lblCategoryName.Text = _category.Name;
-            rptSubCategories.DataSource = _category.SubCategory;
+            lnkCategory.NavigateUrl = _category.Url;
+            lnkShowAll.NavigateUrl = _category.Url;
+            lnkImage.NavigateUrl = _category.Url;
+            rptSubCategories.DataSource = _category.SubCategories;
             rptSubCategories.DataBind();
         }
     }

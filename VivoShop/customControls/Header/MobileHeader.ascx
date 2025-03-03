@@ -10,13 +10,13 @@
                             <use xlink:href="/images/sprite.svg#menu-18x14"></use>
                         </svg>
                     </button>
-                    <a class="mobile-header__logo" href="index.html">
+                    <a class="mobile-header__logo" href="/">
                         <asp:Image runat="server" ImageUrl="~/images/logo-invert-sm-2.png" />
                     </a>
                     <div class="search search--location--mobile-header mobile-header__search">
                         <div class="search__body">
-                            <form class="search__form" action="">
-                                <input class="search__input" name="search" placeholder="Search over 10,000 products" aria-label="Site search" type="text" autocomplete="off">
+                            <div class="search__form" action="" role="form">
+                                <input class="search__input" name="search" placeholder="Pretraga (preko 4000 proizvoda)" aria-label="Site search" type="text" autocomplete="off">
                                 <button class="search__button search__button--type--submit" type="submit">
                                     <svg width="20px" height="20px">
                                         <use xlink:href="/images/sprite.svg#search-20"></use>
@@ -28,13 +28,17 @@
                                     </svg>
                                 </button>
                                 <div class="search__border"></div>
-                            </form>
-                            <div class="search__suggestions suggestions suggestions--location--mobile-header"></div>
+                            </div>
+                            <div class="search__suggestions suggestions suggestions--location--mobile-header">
+                                <ul class="suggestions__list header__search__list"></ul>
+                                <span class="d-inline-block p-2 mb-2 mt-2 text-center bg-warning w-100 font-weight-bold">PREPORUČENI PROIZVODI</span>
+                                <ul class="suggestions__list header__search__product__list"></ul>
+                            </div>
                         </div>
                     </div>
                     <div class="mobile-header__indicators">
                         <div class="indicator indicator--mobile-search indicator--mobile d-md-none">
-                            <button class="indicator__button">
+                            <button class="indicator__button" onclick="return false">
                                 <span class="indicator__area">
                                     <svg width="20px" height="20px">
                                         <use xlink:href="/images/sprite.svg#search-20"></use>
@@ -43,7 +47,7 @@
                             </button>
                         </div>
                         <div class="indicator indicator--mobile d-sm-flex d-none">
-                            <a href="wishlist.html" class="indicator__button">
+                            <a href="/lista-zelja" class="indicator__button">
                                 <span class="indicator__area">
                                     <svg width="20px" height="20px">
                                         <use xlink:href="/images/sprite.svg#heart-20"></use>
@@ -58,7 +62,7 @@
                                     <svg width="20px" height="20px">
                                         <use xlink:href="/images/sprite.svg#cart-20"></use>
                                     </svg>
-                                    <span id="cartFpProductsCountMobile" class="indicator__value">3</span>
+                                    <span id="cartFpProductsCountMobile" class="indicator__value">0</span>
                                 </span>
                             </a>
                         </div>

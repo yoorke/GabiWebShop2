@@ -2,6 +2,7 @@
 using eshopBL;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -39,15 +40,15 @@ namespace VivoShop.customControls.ProductControls.ProductGallery
 
         protected void rptImages_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
-            setImages(e);
+            setImages(e, ConfigurationManager.AppSettings["mainName"]);
         }
 
         protected void rptImagesCarousel_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
-            setImages(e);
+            setImages(e, ConfigurationManager.AppSettings["thumbName"]);
         }
 
-        private void setImages(RepeaterItemEventArgs e)
+        private void setImages(RepeaterItemEventArgs e, string type)
         {
             if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
             {
@@ -58,7 +59,7 @@ namespace VivoShop.customControls.ProductControls.ProductGallery
 
                 Image imgProductImage = (Image)e.Item.FindControl("imgProductImage");
                 //imgProductImage.ImageUrl = getDirectory(getFilename(imageUrl)) + getFilename(imageUrl) + getExtension(imageUrl);
-                imgProductImage.ImageUrl = new ProductBL().GetFullImageUrl(imageUrl, string.Empty);
+                imgProductImage.ImageUrl = new ProductBL().GetFullImageUrl(imageUrl, type);
             }
         }
 

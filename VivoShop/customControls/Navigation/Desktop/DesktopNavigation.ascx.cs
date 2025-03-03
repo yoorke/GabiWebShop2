@@ -1,6 +1,10 @@
-﻿using eshopBL;
+﻿using eshopBE;
+using eshopBL;
+using eshopUtilities;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -12,6 +16,7 @@ namespace VivoShop.customControls.Navigation
     {
         private bool _isHomepage;
         private string _departmentClass;
+        private bool _showVerticalMenu;
 
         public bool IsHomepage
         {
@@ -23,10 +28,48 @@ namespace VivoShop.customControls.Navigation
                 divDepartments.Attributes["class"] = _departmentClass;
             }
         }
+
+        public bool ShowVerticalMenu
+        {
+            get { return _showVerticalMenu; }
+            set { this._showVerticalMenu = value; }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            rptMainCategories.DataSource = new CategoryBL().GetNestedCategoriesList();
-            rptMainCategories.DataBind();
+            List<CategoryView> categories = new List<CategoryView>();
+
+            if(Cache["MainMenu"] == null)
+            {
+                if (File.Exists(Server.MapPath("~/mainMenu.json")))
+                    categories = JsonConvert.DeserializeObject<List<CategoryView>>(File.OpenText(Server.MapPath("~/mainMenu.json")).ReadToEnd());
+                else
+                { 
+                    ErrorLog.LogMessage("Desktop navigation create cache");
+                    categories = new CategoryViewBL().GetNestedCategoriesList();
+                    using (TextWriter tw = new StreamWriter(Server.MapPath("~/mainMenu.json"), false))
+                        tw.Write(JsonConvert.SerializeObject(categories));
+                }
+                Cache.Add("MainMenu", categories, null, DateTime.Now.AddMinutes(60), System.Web.Caching.Cache.NoSlidingExpiration, System.Web.Caching.CacheItemPriority.Normal, null);
+            }
+            else
+            {
+                categories = (List<CategoryView>)Cache["MainMenu"];
+            }
+
+            if(_showVerticalMenu)
+            { 
+                //rptMainCategories.DataSource = new CategoryBL().GetNestedCategoriesList();
+                rptMainCategories.DataSource = categories;
+                rptMainCategories.DataBind();
+
+                divDepartmentsNav.Visible = true;
+            }
+            else
+            {
+                HorizontalMenu.Categories = categories;
+                HorizontalMenu.Visible = true;
+            }
         }
     }
 }

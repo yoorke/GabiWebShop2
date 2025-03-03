@@ -38,17 +38,17 @@
                             <td class="cart-table__column cart-table__column--product">
                                 <a href="" class="cart-table__product-name"><asp:Literal ID="lblProductName" runat="server" Text='<%#Eval("Brand") + " " + Eval("name") %>'></asp:Literal></a>
                             </td>
-                            <td class="cart-table__column cart-table__column--price" data-title="Price">
+                            <td class="cart-table__column cart-table__column--price" data-title="Cena">
                                 <asp:Literal ID="lblProductPrice" runat="server" Text='<%#string.Format("{0:N2}", Eval("userPrice")) %>'></asp:Literal>
                             </td>
-                            <td class="cart-table__column cart-table__column--quantity" data-title="Quantity">
+                            <td class="cart-table__column cart-table__column--quantity" data-title="Količina">
                                 <div class="input-number">
                                     <asp:TextBox ID="txtQuantity" runat="server" CssClass="form-control input-number__input" Text='<%#Eval("quantity") %>' TextMode="Number"></asp:TextBox>
                                     <div class="input-number__add" onclick="CartFpUpdateQuantity('<%#Eval("productID") %>', 1)"></div>
                                     <div class="input-number__sub" onclick="CartFpUpdateQuantity('<%#Eval("productID") %>', -1)"></div>
                                 </div>
                             </td>
-                            <td class="cart-table__column cart-table__column--total" data-title="Total">
+                            <td class="cart-table__column cart-table__column--total" data-title="Ukupno">
                                 <asp:Literal ID="lblTotal" runat="server" Text='<%#string.Format("{0:N2}", Eval("total")) %>'></asp:Literal>
                             </td>
                             <td class="cart-table__column cart-table__column--remove">
@@ -75,6 +75,7 @@
                     <div class="cart__buttons">
                         <a href="/" class="btn btn-light">Nastavi kupovinu</a>
                         <asp:Button ID="btnUpdateCart" runat="server" CssClass="btn btn-primary cart__update-button" Text="Osveži korpu" OnClick="btnUpdateCart_Click" />
+                        <a class="btn btn-primary btn-xl btn-block cart__checkout-button mt-2 d-block d-md-none" href="/porucivanje">Naruči</a>
                     </div>
                 </div>
                 <div class="row justify-content-end pt-5">
@@ -86,19 +87,19 @@
                                     <thead class="cart__totals-header">
                                         <tr>
                                             <th>Osnovica</th>
-                                            <td><asp:Literal ID="lblSubTotal" runat="server" Text="0,00"></asp:Literal><small> din</small></td>
+                                            <td><asp:Literal ID="lblSubTotal" runat="server" Text="0,00"></asp:Literal><small> RSD</small></td>
                                         </tr>
                                     </thead>
                                     <tbody class="cart__totals-body">
                                         <tr>
                                             <th>Porez</th>
-                                            <td><asp:Literal ID="lblTax" runat="server" Text="0,00"></asp:Literal><small> din</small></td>
+                                            <td><asp:Literal ID="lblTax" runat="server" Text="0,00"></asp:Literal><small> RSD</small></td>
                                         </tr>
                                     </tbody>
                                     <tfoot class="cart__totals-footer">
                                         <tr>
                                             <th>Ukupno za plaćanje</th>
-                                            <td><asp:Literal ID="lblTotal" runat="server" Text="0,00"></asp:Literal><small> din</small></td>
+                                            <td><asp:Literal ID="lblTotal" runat="server" Text="0,00"></asp:Literal><small> RSD</small></td>
                                         </tr>
                                     </tfoot>
                                 </table>

@@ -39,7 +39,7 @@ namespace VivoShop
         {
             _total = Math.Round(_total, 2);
             double subTotal = Math.Round(_total / 1.2, 2);
-            double tax = Math.Round(_total - subTotal);
+            double tax = Math.Round(_total - subTotal, 2);
 
             lblSubTotal.Text = string.Format("{0:N2}", subTotal);
             lblTax.Text = string.Format("{0:N2}", tax);

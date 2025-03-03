@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title></title>
+</head>
+<body onload="document.forms['form'].submit()">
+    <form action="https://testsecurepay.eway2pay.com/fim/est3Dgate" method="POST" name="form">
+        <input type="hidden" name="currency" value="941" />
+        <input type="hidden" name="trantype" value="PreAuth" />
+        <input type="hidden" name="okUrl" value="http://www.***.com/NestResponseOK.ashx" />
+        <input type="hidden" name="failUrl" value="http://www.***.com/NestResponseFAIL.ashx" />
+        <input type="hidden" name="amount" value="5990.00" />
+        <input type="hidden" name="oid" value="489" />
+        <input type="hidden" name="clientid" value="13IN003352" />
+        <input type="hidden" name="storetype" value="3d_pay_hosting" />
+        <input type="hidden" name="lang" value="sr" />
+        <input type="hidden" name="hashAlgorithm" value="ver2" />
+        <input type="hidden" name="rnd" value="N2855INH5EM5T7VYL9LA" />
+        <input type="hidden" name="encoding" value="utf-8" />
+        <input type="hidden" name="hash" value="TJjrL0Abv9bsO31uPRHjbZ8nuy7ORgxbZBmbgu/34yvfF0T0HDrKUJT8rKQsfJRVUo4sNk9K9Nn2dFJeWqU/Ww==" />
+    </form>
+</body>
+</html>

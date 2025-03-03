@@ -11,7 +11,7 @@ namespace VivoShop.customControls.BlockProductsColumns
     public partial class BlockProductsColumnsColumn : System.Web.UI.UserControl
     {
         private string _title;
-        private List<Product> _products;
+        private List<ProductFPView> _products;
 
         public string Title
         {
@@ -19,7 +19,7 @@ namespace VivoShop.customControls.BlockProductsColumns
             set { _title = value; }
         }
 
-        public List<Product> Products
+        public List<ProductFPView> Products
         {
             get { return _products; }
             set
